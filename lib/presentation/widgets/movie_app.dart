@@ -15,7 +15,7 @@ class MovieApp extends StatelessWidget {
         appBarTheme: AppBarTheme(elevation: 0),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Container(),
+      home: HomeScreen(),
     );
   }
 }

@@ -1,4 +1,6 @@
+import 'package:flutter_movie/presentation/blocs/movie_backdrop/movie_backdrop_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/movie_crousel/movie_crousel_bloc.dart';
+import 'package:flutter_movie/presentation/blocs/movie_tapped/movie_tapped_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart';
 
@@ -11,7 +13,7 @@ import 'package:flutter_movie/domain/usecases/get_playing_now.dart';
 import 'package:flutter_movie/domain/usecases/get_popular.dart';
 import 'package:flutter_movie/domain/usecases/get_trending.dart';
 
-final getItInstance = GetIt.I; // To het the instance of GetIt
+final getItInstance = GetIt.I; // To get the instance of GetIt
 
 // As we know calling for one class depends upon different class
 // eg to call APIClinet you need to pass Client object i.e you first need to
@@ -51,6 +53,17 @@ Future init() async {
       () => MovieRepositoryImpl(getItInstance()));
 
   // Factory methods registers a new object every time it is called in the application
-  getItInstance.registerFactory<MovieCrouselBloc>(
-      () => MovieCrouselBloc(getTrending: getItInstance()));
+  getItInstance.registerFactory<MovieCrouselBloc>(() => MovieCrouselBloc(
+      getTrending: getItInstance(), movieBackdropBloc: getItInstance()));
+
+  getItInstance.registerFactory<MovieBackdropBloc>(() => MovieBackdropBloc());
+
+  getItInstance.registerFactory<MovieTappedBloc>(() => MovieTappedBloc(
+        getCommingSoon: getItInstance(),
+        getNowPlaying: getItInstance(),
+        getPopular: getItInstance(),
+      ));
+
+  // getItInstance
+  //     .registerLazySingleton<MovieBackdropBloc>(() => MovieBackdropBloc());
 }

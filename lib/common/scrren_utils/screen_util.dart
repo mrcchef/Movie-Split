@@ -21,6 +21,7 @@ class ScreenUtil {
 
   ScreenUtil._();
 
+  // factory methods are used to return instance of class
   factory ScreenUtil() {
     return _instance;
   }

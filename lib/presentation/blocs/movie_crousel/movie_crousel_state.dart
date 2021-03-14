@@ -15,8 +15,10 @@ class MovieCrouselLoaded extends MovieCrouselState {
   final List<MovieEntity> movies;
   final int defaultIndex;
 
-  const MovieCrouselLoaded({this.movies, this.defaultIndex})
-      : assert(defaultIndex >= 0, 'default index should be greater than 0');
+  const MovieCrouselLoaded({
+    this.movies,
+    this.defaultIndex,
+  }) : assert(defaultIndex >= 0, 'default index should be greater than 0');
 
   List<Object> get props => [movies, defaultIndex];
 }

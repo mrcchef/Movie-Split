@@ -14,7 +14,7 @@ class APIClient {
 
   dynamic get(String path) async {
     final String url =
-        "${APIContraints.BASE_URL}$path?api_key=${APIContraints.API_KEY}";
+        "${APIConstants.BASE_URL}$path?api_key=${APIConstants.API_KEY}";
     final response = await _client.get(
       url,
       headers: {'Content-Type': 'application/json'}, // ?

@@ -14,16 +14,26 @@ class ThemeText {
         fontSize: Sizes.dimen_20.sp,
         color: Colors.white,
       );
+  static TextStyle get _whiteHeadline5 => _poppinsTextTheme.headline5.copyWith(
+        fontSize: Sizes.dimen_24.sp,
+        color: Colors.white,
+      );
+
   static TextStyle get whiteSubtitle1 => _poppinsTextTheme.headline5
       .copyWith(fontSize: Sizes.dimen_16, color: Colors.white);
 
   static TextStyle get whiteBodyText2 => _poppinsTextTheme.bodyText2
       .copyWith(fontSize: Sizes.dimen_14, color: Colors.white);
 
+  static TextStyle get whiteButton => _poppinsTextTheme.button
+      .copyWith(fontSize: Sizes.dimen_14, color: Colors.white);
+
   static getTextTheme() => TextTheme(
+        headline5: _whiteHeadline5,
         headline6: _whiteHeadline6,
         subtitle1: whiteSubtitle1,
         bodyText2: whiteBodyText2,
+        button: whiteButton,
       );
 }
 

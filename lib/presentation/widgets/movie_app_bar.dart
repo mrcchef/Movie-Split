@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movie/common/constants/size_constants.dart';
 import 'package:flutter_movie/common/scrren_utils/screen_util.dart';
-import 'package:flutter_movie/presentation/journeys/home/drawer/navigation_drawer.dart';
 import 'package:flutter_movie/presentation/widgets/movie_logo.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_movie/common/extension/size_extension.dart';

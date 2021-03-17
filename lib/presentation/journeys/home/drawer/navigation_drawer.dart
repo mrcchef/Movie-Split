@@ -9,7 +9,9 @@ import 'package:flutter_movie/common/extension/string_extension.dart';
 import 'package:flutter_movie/presentation/journeys/home/drawer/navigation_bar_expand_tile.dart';
 import 'package:flutter_movie/presentation/journeys/home/drawer/navigation_bar_tile.dart';
 import 'package:flutter_movie/presentation/journeys/home/language/language_bloc.dart';
+import 'package:flutter_movie/presentation/widgets/app_dialog.dart';
 import 'package:flutter_movie/presentation/widgets/movie_logo.dart';
+import 'package:wiredash/wiredash.dart';
 
 class NavigationDrawer extends StatelessWidget {
   @override
@@ -53,14 +55,36 @@ class NavigationDrawer extends StatelessWidget {
           ),
           NavigationBarTile(
             title: TranslateConstants.feedback,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pop();
+              Wiredash.of(context).show();
+            },
           ),
           NavigationBarTile(
             title: TranslateConstants.about,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pop();
+              _showDialog(context);
+            },
           ),
         ],
       )),
+    );
+  }
+
+  Future _showDialog(BuildContext context) {
+    // print(TranslateConstants.description);
+    return showDialog(
+      context: context,
+      child: AppDialog(
+        title: TranslateConstants.about,
+        description: TranslateConstants.description,
+        buttonText: TranslateConstants.okay,
+        image: Image.asset(
+          "assets/pngs/tmdb_logo.png",
+          height: Sizes.dimen_80,
+        ),
+      ),
     );
   }
 }

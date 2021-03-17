@@ -36,6 +36,7 @@ class MovieAppBar extends StatelessWidget {
             icon: Icon(Icons.search),
             onPressed: () {},
             iconSize: Sizes.dimen_12.h,
+            color: Colors.white,
           ),
         ],
       ),

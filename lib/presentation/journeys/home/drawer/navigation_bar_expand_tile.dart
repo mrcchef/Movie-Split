@@ -13,19 +13,16 @@ class NavigationBarExpandTile extends StatelessWidget {
         assert(subList != null, 'sublist should not be null');
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onPressed,
-      child: ExpansionTile(
-        title: Text(
-          title,
-          style: Theme.of(context).textTheme.headline6,
-        ),
-        children: [
-          for (int i = 0; i < subList.length; i++)
-            NavigationBarExpandChildrenTile(
-                title: subList[i], onPressed: onPressed),
-        ],
+    return ExpansionTile(
+      title: Text(
+        title,
+        style: Theme.of(context).textTheme.headline6,
       ),
+      children: [
+        for (int i = 0; i < subList.length; i++)
+          NavigationBarExpandChildrenTile(
+              title: subList[i], onPressed: () => onPressed(i)),
+      ],
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter_movie/presentation/blocs/movie_backdrop/movie_backdrop_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/movie_crousel/movie_crousel_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/movie_tapped/movie_tapped_bloc.dart';
+import 'package:flutter_movie/presentation/journeys/home/language/language_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart';
 
@@ -30,6 +31,10 @@ Future init() async {
   // Corner barces contains the type of Object that we need to intialize
   // In the paramenter it takes a factory function which intializes the
   // Class
+  // registerSingleton and registerLazySingleton both creates a single instance
+  // of the class throughout the appilcation
+  // Lazy saves memory and resources by initialising it when it calls the very
+  // first time.
 
   // If that instansciation of that class depends upon some other class then
   // we simple use class the instance of the class GetIT and in our case
@@ -63,6 +68,8 @@ Future init() async {
         getNowPlaying: getItInstance(),
         getPopular: getItInstance(),
       ));
+
+  getItInstance.registerLazySingleton<LanguageBloc>(() => LanguageBloc());
 
   // getItInstance
   //     .registerLazySingleton<MovieBackdropBloc>(() => MovieBackdropBloc());

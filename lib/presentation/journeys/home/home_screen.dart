@@ -4,6 +4,7 @@ import 'package:flutter_movie/presentation/blocs/movie_backdrop/movie_backdrop_b
 import 'package:flutter_movie/presentation/blocs/movie_crousel/movie_crousel_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/movie_tapped/movie_tapped_bloc.dart';
 import 'package:flutter_movie/presentation/journeys/home/drawer/navigation_drawer.dart';
+import 'package:flutter_movie/presentation/journeys/home/movie_crousel/crousel_load_error_widget.dart';
 import 'package:flutter_movie/presentation/journeys/home/movie_crousel/movie_crousel_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_movie/presentation/journeys/home/movie_tapped/movie_tapped_widget.dart';
@@ -70,6 +71,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       heightFactor: 0.4,
                       child: MovieTappedWidget()),
                 ],
+              );
+            } else if (state is MovieCrouselError) {
+              return CrouselLoadErrorWidget(
+                appErrorType: state.errorType,
+                onPressed: () {
+                  movieCrouselBloc.add(CrouselLoadEvent());
+                },
               );
             }
             return SizedBox.shrink();

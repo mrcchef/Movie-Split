@@ -26,5 +26,6 @@ class MovieTappedLoaded extends MovieTappedState {
 }
 
 class MovieTappedError extends MovieTappedState {
-  MovieTappedError({tabIndex}) : super(tabIndex: tabIndex);
+  final AppErrorType appErrorType;
+  MovieTappedError({this.appErrorType, tabIndex}) : super(tabIndex: tabIndex);
 }

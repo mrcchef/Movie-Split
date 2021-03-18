@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 
 import 'package:flutter_movie/data/data_sources/movie_remote_data_source.dart';
@@ -21,9 +23,11 @@ class MovieRepositoryImpl extends MovieRepository {
       // in the right parameter
       final movies = await remoteDataSource.getTrending();
       return Right(movies);
+    } on SocketException {
+      return Left(AppError(AppErrorType.network));
     } on Exception {
       // else assign left data type through Left() constructor
-      return Left(AppError("Something went wrong!!"));
+      return Left(AppError(AppErrorType.api));
     }
   }
 
@@ -32,8 +36,11 @@ class MovieRepositoryImpl extends MovieRepository {
     try {
       final movies = await remoteDataSource.getPopular();
       return Right(movies);
+    } on SocketException {
+      return Left(AppError(AppErrorType.network));
     } on Exception {
-      return Left(AppError("Something went wrong!!"));
+      // else assign left data type through Left() constructor
+      return Left(AppError(AppErrorType.api));
     }
   }
 
@@ -42,8 +49,11 @@ class MovieRepositoryImpl extends MovieRepository {
     try {
       final movies = await remoteDataSource.getCommingSoon();
       return Right(movies);
+    } on SocketException {
+      return Left(AppError(AppErrorType.network));
     } on Exception {
-      return Left(AppError("Something went wrong!!"));
+      // else assign left data type through Left() constructor
+      return Left(AppError(AppErrorType.api));
     }
   }
 
@@ -52,8 +62,11 @@ class MovieRepositoryImpl extends MovieRepository {
     try {
       final movies = await remoteDataSource.getPlayingNow();
       return Right(movies);
+    } on SocketException {
+      return Left(AppError(AppErrorType.network));
     } on Exception {
-      return Left(AppError("Something went wrong!!"));
+      // else assign left data type through Left() constructor
+      return Left(AppError(AppErrorType.api));
     }
   }
 }

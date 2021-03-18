@@ -30,6 +30,15 @@ class _MovieAppState extends State<MovieApp> {
     super.dispose();
   }
 
+  // Navigator keys are used to navigate without using context in your app
+  // For that we need to intialize a Global navigator key as shown above.
+  // Then pass it to navigatorKey parameter in the mapterial app
+  // Eg:-  navigatorKey.currentState.pushNamed("MyRoute");
+  // use above to navigate at any part without context
+
+  // Now wiredash needs to open the portal and for that it needs to navigate
+  // and require navigation key
+
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init();

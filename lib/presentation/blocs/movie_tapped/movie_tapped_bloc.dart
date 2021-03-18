@@ -40,8 +40,12 @@ class MovieTappedBloc extends Bloc<MovieTappedEvent, MovieTappedState> {
           eitherResponse = await getCommingSoon(NoParams());
           break;
       }
+
       yield eitherResponse.fold(
-          (l) => MovieTappedError(tabIndex: event.tabIndex),
+          (error) => MovieTappedError(
+                appErrorType: error.errorType,
+                tabIndex: event.tabIndex,
+              ),
           (movies) => MovieTappedLoaded(
                 tabIndex: event.tabIndex,
                 movies: movies,

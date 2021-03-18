@@ -28,7 +28,7 @@ class MovieBackdropWidget extends StatelessWidget {
               heightFactor: 1,
               widthFactor: 1,
               child: BlocBuilder<MovieBackdropBloc, MovieBackdropState>(
-                cubit: BlocProvider.of(context),
+                bloc: BlocProvider.of(context),
                 builder: (context, state) {
                   if (state is MovieBackdropLoaded) {
                     return CachedNetworkImage(

@@ -16,7 +16,7 @@ class APIClient {
     final String url =
         "${APIConstants.BASE_URL}$path?api_key=${APIConstants.API_KEY}";
     final response = await _client.get(
-      url,
+      Uri.parse(url),
       headers: {'Content-Type': 'application/json'}, // ?
     );
 

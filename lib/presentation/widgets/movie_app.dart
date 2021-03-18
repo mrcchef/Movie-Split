@@ -36,7 +36,7 @@ class _MovieAppState extends State<MovieApp> {
     return BlocProvider<LanguageBloc>(
       create: (context) => languageBloc,
       child: BlocBuilder<LanguageBloc, LanguageState>(
-        cubit: languageBloc,
+        bloc: languageBloc,
         builder: (ctx, state) {
           if (state is LanguageChanged) {
             return WiredashApp(

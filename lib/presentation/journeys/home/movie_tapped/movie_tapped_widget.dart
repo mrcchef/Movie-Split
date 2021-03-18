@@ -37,7 +37,7 @@ class _MovieTappedWidgetState extends State<MovieTappedWidget> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MovieTappedBloc, MovieTappedState>(
-        cubit: BlocProvider.of(context),
+        bloc: BlocProvider.of(context),
         builder: (context, state) {
           return Padding(
             padding: const EdgeInsets.only(top: Sizes.dimen_4),

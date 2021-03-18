@@ -6,7 +6,7 @@ class MovieDataWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MovieBackdropBloc, MovieBackdropState>(
-      cubit: BlocProvider.of<MovieBackdropBloc>(context),
+      bloc: BlocProvider.of<MovieBackdropBloc>(context),
       builder: (context, state) {
         if (state is MovieBackdropLoaded)
           return Text(

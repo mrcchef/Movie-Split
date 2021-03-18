@@ -76,7 +76,7 @@ class NavigationDrawer extends StatelessWidget {
     // print(TranslateConstants.description);
     return showDialog(
       context: context,
-      child: AppDialog(
+      builder: (context) => AppDialog(
         title: TranslateConstants.about,
         description: TranslateConstants.description,
         buttonText: TranslateConstants.okay,

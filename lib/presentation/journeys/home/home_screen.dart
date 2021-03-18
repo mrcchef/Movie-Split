@@ -51,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ],
       child: Scaffold(
         body: BlocBuilder<MovieCrouselBloc, MovieCrouselState>(
-          cubit: movieCrouselBloc,
+          bloc: movieCrouselBloc,
           builder: (context, state) {
             if (state is MovieCrouselLoaded) {
               return Stack(

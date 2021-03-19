@@ -1,19 +1,31 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_movie/data/core/api_constraint.dart';
+import 'package:flutter_movie/presentation/journeys/home/movie_detail/movie_detail_args.dart';
+import 'package:flutter_movie/presentation/journeys/home/movie_detail/movie_detail_screen.dart';
 import 'package:flutter_movie/presentation/themes/theme_text.dart';
 
 class MovieTabCardWidget extends StatelessWidget {
+  final int movieId;
   final String posterPath;
   final String title;
-  MovieTabCardWidget({@required this.title, @required this.posterPath})
+  MovieTabCardWidget(
+      {@required this.title, @required this.posterPath, @required this.movieId})
       : assert(title != null, 'title should not be equal to null'),
         assert(posterPath != null, 'imageUrl should not be eqaul to null');
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => MovieDetailScreen(
+              movieDetailArgs: MovieDetailArgs(movieId: movieId),
+            ),
+          ),
+        );
+      },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
         child: Column(

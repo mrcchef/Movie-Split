@@ -52,6 +52,7 @@ class _MovieAppState extends State<MovieApp> {
               navigatorKey: navigatorKey,
               locale: state.locale,
               child: MaterialApp(
+                debugShowCheckedModeBanner: false,
                 navigatorKey: navigatorKey,
                 title: 'Movie App',
                 theme: ThemeData(

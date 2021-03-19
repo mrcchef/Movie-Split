@@ -43,4 +43,11 @@ extension TextThemeExtension on TextTheme {
         color: AppColor.royalBlue,
         fontWeight: FontWeight.bold,
       );
+
+  TextStyle get greySubtitle1 => subtitle1.copyWith(
+        color: Colors.grey,
+      );
+  TextStyle get violetHeadline6 => headline6.copyWith(
+        color: AppColor.violet,
+      );
 }

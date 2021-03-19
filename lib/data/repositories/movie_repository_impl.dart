@@ -5,6 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_movie/data/data_sources/movie_remote_data_source.dart';
 import 'package:flutter_movie/data/models/movie_model.dart';
 import 'package:flutter_movie/domain/entities/app_error.dart';
+import 'package:flutter_movie/domain/entities/movie_detail_entity.dart';
 import 'package:flutter_movie/domain/repositories/movie_repository.dart';
 
 // Dartz is a package that provides us feature of Either
@@ -62,6 +63,19 @@ class MovieRepositoryImpl extends MovieRepository {
     try {
       final movies = await remoteDataSource.getPlayingNow();
       return Right(movies);
+    } on SocketException {
+      return Left(AppError(AppErrorType.network));
+    } on Exception {
+      // else assign left data type through Left() constructor
+      return Left(AppError(AppErrorType.api));
+    }
+  }
+
+  @override
+  Future<Either<AppError, MovieDetailEntity>> getMovieDetail(int id) async {
+    try {
+      final movie = await remoteDataSource.getMovieDetail(id);
+      return Right(movie);
     } on SocketException {
       return Left(AppError(AppErrorType.network));
     } on Exception {

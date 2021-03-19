@@ -10,7 +10,6 @@ import 'package:flutter_movie/domain/entities/no_params.dart';
 import 'package:flutter_movie/domain/usecases/get_comming_soon.dart';
 import 'package:flutter_movie/domain/usecases/get_playing_now.dart';
 import 'package:flutter_movie/domain/usecases/get_popular.dart';
-import 'package:flutter_movie/domain/usecases/get_trending.dart';
 
 part 'movie_tapped_event.dart';
 part 'movie_tapped_state.dart';

@@ -1,6 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_movie/domain/entities/app_error.dart';
+import 'package:flutter_movie/domain/entities/movie_detail_entity.dart';
 import 'package:flutter_movie/domain/entities/movie_entity.dart';
+import 'package:flutter_movie/domain/entities/movie_params.dart';
 
 // It is the abstract class which has a method call()
 // We have created this class to maintain the uniformatity such that in future
@@ -13,5 +15,5 @@ import 'package:flutter_movie/domain/entities/movie_entity.dart';
 
 // This class is extended by all the use cases in the project
 abstract class UseCase<Type, Params> {
-  Future<Either<AppError, List<MovieEntity>>> call(Params params);
+  Future<Either<AppError, Type>> call(Params params);
 }

@@ -15,7 +15,9 @@ class MovieListViewBuilder extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       itemBuilder: (context, index) {
         return MovieTabCardWidget(
-            title: movies[index].title, posterPath: movies[index].posterPath);
+            title: movies[index].title,
+            posterPath: movies[index].posterPath,
+            movieId: movies[index].id);
       },
       itemCount: movies.length,
       separatorBuilder: (context, index) => Divider(

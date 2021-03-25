@@ -2,9 +2,12 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_movie/data/core/api_clinet.dart';
+import 'package:flutter_movie/data/models/cast_crew_result_data_model.dart';
 import 'package:flutter_movie/data/models/movie_detail_model.dart';
 import 'package:flutter_movie/data/models/movies_result_model.dart';
+import 'package:flutter_movie/domain/entities/movie_cast_entity.dart';
 import 'package:flutter_movie/domain/entities/movie_detail_entity.dart';
+import 'package:flutter_movie/domain/usecases/get_movie_cast.dart';
 import 'package:flutter_movie/domain/usecases/get_movie_detail.dart';
 import 'package:http/http.dart';
 
@@ -17,7 +20,8 @@ abstract class MovieRemoteDataSource {
   Future<List<MovieModel>> getPopular();
   Future<List<MovieModel>> getPlayingNow();
   Future<List<MovieModel>> getCommingSoon();
-  Future<MovieDetailEntity> getMovieDetail(int id);
+  Future<MovieDetailModel> getMovieDetail(int id);
+  Future<List<CastModel>> getMovieCast(int id);
 }
 
 // This class has all the implimentation of above abstract class
@@ -64,5 +68,13 @@ class MovieRemoteDataSourceImpl extends MovieRemoteDataSource {
     final movie = MovieDetailModel.fromJson(responseBody);
     print(movie);
     return movie;
+  }
+
+  @override
+  Future<List<CastModel>> getMovieCast(int id) async {
+    final responseBody = await _client.get('movie/$id/credits');
+    final cast = CastCrewResultDataModel.fromJson(responseBody).cast;
+    print(cast);
+    return cast;
   }
 }

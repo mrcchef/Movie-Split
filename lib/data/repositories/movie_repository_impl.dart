@@ -3,10 +3,14 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 
 import 'package:flutter_movie/data/data_sources/movie_remote_data_source.dart';
+import 'package:flutter_movie/data/models/cast_crew_result_data_model.dart';
+import 'package:flutter_movie/data/models/movie_detail_model.dart';
 import 'package:flutter_movie/data/models/movie_model.dart';
 import 'package:flutter_movie/domain/entities/app_error.dart';
+import 'package:flutter_movie/domain/entities/movie_cast_entity.dart';
 import 'package:flutter_movie/domain/entities/movie_detail_entity.dart';
 import 'package:flutter_movie/domain/repositories/movie_repository.dart';
+import 'package:flutter_movie/domain/usecases/get_movie_cast.dart';
 
 // Dartz is a package that provides us feature of Either
 // Either is a data-type which contains both failure and success i.e (L,R)
@@ -72,10 +76,23 @@ class MovieRepositoryImpl extends MovieRepository {
   }
 
   @override
-  Future<Either<AppError, MovieDetailEntity>> getMovieDetail(int id) async {
+  Future<Either<AppError, MovieDetailModel>> getMovieDetail(int id) async {
     try {
       final movie = await remoteDataSource.getMovieDetail(id);
       return Right(movie);
+    } on SocketException {
+      return Left(AppError(AppErrorType.network));
+    } on Exception {
+      // else assign left data type through Left() constructor
+      return Left(AppError(AppErrorType.api));
+    }
+  }
+
+  @override
+  Future<Either<AppError, List<CastModel>>> getMovieCast(int id) async {
+    try {
+      final cast = await remoteDataSource.getMovieCast(id);
+      return Right(cast);
     } on SocketException {
       return Left(AppError(AppErrorType.network));
     } on Exception {

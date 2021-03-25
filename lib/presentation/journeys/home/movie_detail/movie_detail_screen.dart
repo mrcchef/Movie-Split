@@ -5,8 +5,10 @@ import 'package:flutter_movie/dipendencies/get_it.dart';
 import 'package:flutter_movie/domain/entities/app_error.dart';
 import 'package:flutter_movie/domain/entities/movie_detail_entity.dart';
 import 'package:flutter_movie/domain/entities/movie_entity.dart';
+import 'package:flutter_movie/presentation/blocs/movie_cast/movie_cast_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/movie_detail/movie_detail_bloc.dart';
 import 'package:flutter_movie/presentation/journeys/home/movie_detail/big_poster.dart';
+import 'package:flutter_movie/presentation/journeys/home/movie_detail/cast_widget.dart';
 import 'package:flutter_movie/presentation/journeys/home/movie_detail/movie_detail_args.dart';
 import 'package:flutter_movie/presentation/widgets/app_error_widget.dart';
 
@@ -24,10 +26,12 @@ class MovieDetailScreen extends StatefulWidget {
 
 class _MovieDetailScreenState extends State<MovieDetailScreen> {
   MovieDetailBloc _movieDetailBloc;
+  MovieCastBloc _movieCastBloc;
 
   @override
   void initState() {
     _movieDetailBloc = getItInstance<MovieDetailBloc>();
+    _movieCastBloc = _movieDetailBloc.movieCastBloc;
     _movieDetailBloc
         .add(MovieDetailLoadEvent(movieId: widget.movieDetailArgs.movieId));
     super.initState();
@@ -35,31 +39,62 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
 
   @override
   void dispose() {
-    _movieDetailBloc.close();
+    _movieDetailBloc?.close();
+    _movieCastBloc?.close();
     super.dispose();
   }
+  // So we  have two method of BlocProvider<T>
+  // 1st -> BlocProvider<T>(create: <takes a function that returns a bloc>, child: null)
+  // 2ns -> BlocProvider<T>.value(value: <takes instace of bloc>, child: null)
+
+  // Now, We know BlocProvider is used to pass the instance of bloc to this
+  // child widget but when we use Navigator.of(context) we actually chaning the
+  // screen due to which in the 1st method instance of bloc will be disposed
+  // But if we need bloc in more that one screen then we should use 2nd method
+  // and manually dispose the instance of bloc in the dispose();
+
+  // 2nd method is better and we should use it and manually in every class we
+  // shold override dispose() and close our instances
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocProvider<MovieDetailBloc>(
-        create: (_) => _movieDetailBloc,
+      body: MultiBlocProvider(
+        providers: [
+          BlocProvider.value(value: _movieDetailBloc),
+          BlocProvider.value(value: _movieCastBloc),
+        ],
         child: BlocBuilder<MovieDetailBloc, MovieDetailState>(
           builder: (ctx, state) {
             if (state is MovieDetailLoaded) {
               final movie = state.movieDetailEntity;
-              return Column(
-                children: [
-                  BigPoster(movieDetailEntity: movie),
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: Sizes.dimen_8),
-                    child: Text(
-                      movie.overview,
-                      maxLines: 5,
+              return SingleChildScrollView(
+                child: Column(
+                  children: [
+                    BigPoster(movieDetailEntity: movie),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: Sizes.dimen_16, vertical: Sizes.dimen_8),
+                      child: Text(
+                        movie.overview,
+                      ),
                     ),
-                  ),
-                ],
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: Sizes.dimen_16,
+                        vertical: Sizes.dimen_8,
+                      ),
+                      child: Container(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "Cast",
+                          style: Theme.of(context).textTheme.headline6,
+                        ),
+                      ),
+                    ),
+                    CastWidget(),
+                  ],
+                ),
               );
             } else if (state is MovieDetailError) {
               return AppErrorWidget(

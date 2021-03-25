@@ -8,14 +8,15 @@ import 'package:flutter_movie/domain/entities/app_error.dart';
 import 'package:flutter_movie/domain/entities/movie_detail_entity.dart';
 import 'package:flutter_movie/domain/entities/movie_params.dart';
 import 'package:flutter_movie/domain/usecases/get_movie_detail.dart';
+import 'package:flutter_movie/presentation/blocs/movie_cast/movie_cast_bloc.dart';
 
 part 'movie_detail_event.dart';
 part 'movie_detail_state.dart';
 
 class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState> {
   final GetMovieDetail getMovieDetail;
-
-  MovieDetailBloc({@required this.getMovieDetail})
+  final MovieCastBloc movieCastBloc;
+  MovieDetailBloc({@required this.getMovieDetail, @required this.movieCastBloc})
       : super(MovieDetailInitial());
 
   @override
@@ -30,6 +31,8 @@ class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState> {
           (error) => MovieDetailError(),
           (movieDetailEntity) =>
               MovieDetailLoaded(movieDetailEntity: movieDetailEntity));
+
+      movieCastBloc.add(LoadMovieCastEvent(movieId: event.movieId));
     }
   }
 }

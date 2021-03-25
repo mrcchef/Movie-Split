@@ -9,6 +9,7 @@ import 'package:flutter_movie/domain/usecases/usecase.dart';
 // call() is a methods that is there for every class and call() method is executed
 // with the instance only
 // For demonstration look in the main file
+
 class GetTrending extends UseCase<List<MovieEntity>, NoParams> {
   final MovieRepository movieRepository;
   GetTrending(this.movieRepository);

@@ -9,6 +9,7 @@ import 'package:flutter_movie/data/models/movie_model.dart';
 import 'package:flutter_movie/domain/entities/app_error.dart';
 import 'package:flutter_movie/domain/entities/movie_cast_entity.dart';
 import 'package:flutter_movie/domain/entities/movie_detail_entity.dart';
+import 'package:flutter_movie/domain/entities/video_entity.dart';
 import 'package:flutter_movie/domain/repositories/movie_repository.dart';
 import 'package:flutter_movie/domain/usecases/get_movie_cast.dart';
 
@@ -93,6 +94,19 @@ class MovieRepositoryImpl extends MovieRepository {
     try {
       final cast = await remoteDataSource.getMovieCast(id);
       return Right(cast);
+    } on SocketException {
+      return Left(AppError(AppErrorType.network));
+    } on Exception {
+      // else assign left data type through Left() constructor
+      return Left(AppError(AppErrorType.api));
+    }
+  }
+
+  @override
+  Future<Either<AppError, List<VideoEntity>>> getMovieVideo(int id) async {
+    try {
+      final video = await remoteDataSource.getMovieVideo(id);
+      return Right(video);
     } on SocketException {
       return Left(AppError(AppErrorType.network));
     } on Exception {

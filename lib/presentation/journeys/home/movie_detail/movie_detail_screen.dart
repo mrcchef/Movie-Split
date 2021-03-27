@@ -7,9 +7,11 @@ import 'package:flutter_movie/domain/entities/movie_detail_entity.dart';
 import 'package:flutter_movie/domain/entities/movie_entity.dart';
 import 'package:flutter_movie/presentation/blocs/movie_cast/movie_cast_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/movie_detail/movie_detail_bloc.dart';
+import 'package:flutter_movie/presentation/blocs/movie_video/movie_video_bloc.dart';
 import 'package:flutter_movie/presentation/journeys/home/movie_detail/big_poster.dart';
 import 'package:flutter_movie/presentation/journeys/home/movie_detail/cast_widget.dart';
 import 'package:flutter_movie/presentation/journeys/home/movie_detail/movie_detail_args.dart';
+import 'package:flutter_movie/presentation/journeys/home/movie_detail/video_widget.dart';
 import 'package:flutter_movie/presentation/widgets/app_error_widget.dart';
 
 class MovieDetailScreen extends StatefulWidget {
@@ -27,11 +29,14 @@ class MovieDetailScreen extends StatefulWidget {
 class _MovieDetailScreenState extends State<MovieDetailScreen> {
   MovieDetailBloc _movieDetailBloc;
   MovieCastBloc _movieCastBloc;
+  MovieVideoBloc _movieVideoBloc;
 
   @override
   void initState() {
     _movieDetailBloc = getItInstance<MovieDetailBloc>();
     _movieCastBloc = _movieDetailBloc.movieCastBloc;
+    _movieVideoBloc = _movieDetailBloc.movieVideoBloc;
+
     _movieDetailBloc
         .add(MovieDetailLoadEvent(movieId: widget.movieDetailArgs.movieId));
     super.initState();
@@ -41,6 +46,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
   void dispose() {
     _movieDetailBloc?.close();
     _movieCastBloc?.close();
+    _movieVideoBloc?.close();
     super.dispose();
   }
   // So we  have two method of BlocProvider<T>
@@ -63,6 +69,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
         providers: [
           BlocProvider.value(value: _movieDetailBloc),
           BlocProvider.value(value: _movieCastBloc),
+          BlocProvider.value(value: _movieVideoBloc),
         ],
         child: BlocBuilder<MovieDetailBloc, MovieDetailState>(
           builder: (ctx, state) {
@@ -93,6 +100,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                       ),
                     ),
                     CastWidget(),
+                    VideoWidget(),
                   ],
                 ),
               );

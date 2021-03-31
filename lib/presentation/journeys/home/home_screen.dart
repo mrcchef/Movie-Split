@@ -3,6 +3,7 @@ import 'package:flutter_movie/dipendencies/get_it.dart';
 import 'package:flutter_movie/presentation/blocs/movie_backdrop/movie_backdrop_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/movie_crousel/movie_crousel_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/movie_tapped/movie_tapped_bloc.dart';
+import 'package:flutter_movie/presentation/blocs/search_movies/search_movies_bloc.dart';
 import 'package:flutter_movie/presentation/journeys/home/drawer/navigation_drawer.dart';
 import 'package:flutter_movie/presentation/widgets/app_error_widget.dart';
 import 'package:flutter_movie/presentation/journeys/home/movie_crousel/movie_crousel_widget.dart';
@@ -18,6 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   MovieCrouselBloc movieCrouselBloc;
   MovieBackdropBloc movieBackdropBloc;
   MovieTappedBloc movieTappedBloc;
+  SearchMoviesBloc searchMoviesBloc;
 
   @override
   void initState() {
@@ -25,6 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
     movieCrouselBloc = getItInstance<MovieCrouselBloc>();
     movieBackdropBloc = movieCrouselBloc.movieBackdropBloc;
     movieTappedBloc = getItInstance<MovieTappedBloc>();
+    searchMoviesBloc = getItInstance<SearchMoviesBloc>();
     // movieCrouselBloc = movieCrouselBloc.movie;
     movieCrouselBloc.add(CrouselLoadEvent());
   }
@@ -34,6 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
     movieCrouselBloc?.close();
     movieBackdropBloc?.close();
     movieTappedBloc?.close();
+    searchMoviesBloc?.close();
   }
 
   @override
@@ -48,7 +52,10 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         BlocProvider(
           create: (context) => movieTappedBloc,
-        )
+        ),
+        BlocProvider(
+          create: (context) => searchMoviesBloc,
+        ),
       ],
       child: Scaffold(
         body: BlocBuilder<MovieCrouselBloc, MovieCrouselState>(

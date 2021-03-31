@@ -1,12 +1,14 @@
 import 'package:flutter_movie/domain/usecases/get_movie_cast.dart';
 import 'package:flutter_movie/domain/usecases/get_movie_detail.dart';
 import 'package:flutter_movie/domain/usecases/get_movie_video.dart';
+import 'package:flutter_movie/domain/usecases/get_seach_movies.dart';
 import 'package:flutter_movie/presentation/blocs/movie_backdrop/movie_backdrop_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/movie_cast/movie_cast_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/movie_crousel/movie_crousel_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/movie_detail/movie_detail_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/movie_tapped/movie_tapped_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/movie_video/movie_video_bloc.dart';
+import 'package:flutter_movie/presentation/blocs/search_movies/search_movies_bloc.dart';
 import 'package:flutter_movie/presentation/journeys/home/language/language_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart';
@@ -72,6 +74,8 @@ Future init() async {
   getItInstance.registerLazySingleton<GetMovieVideo>(
       () => GetMovieVideo(getItInstance()));
 
+  getItInstance.registerLazySingleton<GetSearchMovies>(
+      () => GetSearchMovies(getItInstance()));
   // Factory methods registers a new object every time it is called in the application
   getItInstance.registerFactory<MovieCrouselBloc>(() => MovieCrouselBloc(
       getTrending: getItInstance(), movieBackdropBloc: getItInstance()));
@@ -97,6 +101,9 @@ Future init() async {
         movieCastBloc: getItInstance(),
         movieVideoBloc: getItInstance(),
       ));
+
+  getItInstance.registerFactory<SearchMoviesBloc>(
+      () => SearchMoviesBloc(movieRepository: getItInstance()));
 
   // getItInstance
   //     .registerLazySingleton<MovieBackdropBloc>(() => MovieBackdropBloc());

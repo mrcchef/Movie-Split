@@ -8,6 +8,7 @@ import 'package:flutter_movie/data/models/movies_result_model.dart';
 import 'package:flutter_movie/data/models/video_result_data_model.dart';
 import 'package:flutter_movie/domain/entities/movie_cast_entity.dart';
 import 'package:flutter_movie/domain/entities/movie_detail_entity.dart';
+import 'package:flutter_movie/domain/entities/movie_search_params.dart';
 import 'package:flutter_movie/domain/usecases/get_movie_cast.dart';
 import 'package:flutter_movie/domain/usecases/get_movie_detail.dart';
 import 'package:http/http.dart';
@@ -21,6 +22,7 @@ abstract class MovieRemoteDataSource {
   Future<List<MovieModel>> getPopular();
   Future<List<MovieModel>> getPlayingNow();
   Future<List<MovieModel>> getCommingSoon();
+  Future<List<MovieModel>> getSeachMovies(String seachTerm);
   Future<MovieDetailModel> getMovieDetail(int id);
   Future<List<CastModel>> getMovieCast(int id);
   Future<List<VideoModel>> getMovieVideo(int id);
@@ -86,5 +88,14 @@ class MovieRemoteDataSourceImpl extends MovieRemoteDataSource {
     final videos = VideoResultDataModel.fromJson(responseBody).videos;
     print(videos);
     return videos;
+  }
+
+  @override
+  Future<List<MovieModel>> getSeachMovies(String seachTerm) async {
+    final responseBody =
+        await _client.get('search/movie', params: {'query': seachTerm});
+    final movies = MoviesResultModel.fromJson(responseBody).movies;
+    print(movies);
+    return movies;
   }
 }

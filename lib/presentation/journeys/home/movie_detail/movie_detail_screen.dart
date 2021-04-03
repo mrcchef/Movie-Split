@@ -5,6 +5,7 @@ import 'package:flutter_movie/dipendencies/get_it.dart';
 import 'package:flutter_movie/domain/entities/app_error.dart';
 import 'package:flutter_movie/domain/entities/movie_detail_entity.dart';
 import 'package:flutter_movie/domain/entities/movie_entity.dart';
+import 'package:flutter_movie/presentation/blocs/favourite/favourite_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/movie_cast/movie_cast_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/movie_detail/movie_detail_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/movie_video/movie_video_bloc.dart';
@@ -30,13 +31,14 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
   MovieDetailBloc _movieDetailBloc;
   MovieCastBloc _movieCastBloc;
   MovieVideoBloc _movieVideoBloc;
+  FavouriteBloc _favouriteBloc;
 
   @override
   void initState() {
     _movieDetailBloc = getItInstance<MovieDetailBloc>();
     _movieCastBloc = _movieDetailBloc.movieCastBloc;
     _movieVideoBloc = _movieDetailBloc.movieVideoBloc;
-
+    _favouriteBloc = _movieDetailBloc.favouriteBloc;
     _movieDetailBloc
         .add(MovieDetailLoadEvent(movieId: widget.movieDetailArgs.movieId));
     super.initState();
@@ -47,6 +49,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
     _movieDetailBloc?.close();
     _movieCastBloc?.close();
     _movieVideoBloc?.close();
+    _favouriteBloc?.close();
     super.dispose();
   }
   // So we  have two method of BlocProvider<T>
@@ -70,6 +73,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
           BlocProvider.value(value: _movieDetailBloc),
           BlocProvider.value(value: _movieCastBloc),
           BlocProvider.value(value: _movieVideoBloc),
+          BlocProvider.value(value: _favouriteBloc),
         ],
         child: BlocBuilder<MovieDetailBloc, MovieDetailState>(
           builder: (ctx, state) {

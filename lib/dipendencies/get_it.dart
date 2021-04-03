@@ -1,7 +1,13 @@
+import 'package:flutter_movie/data/data_sources/movie_local_data_source.dart';
+import 'package:flutter_movie/domain/usecases/check_if_favourite_movie.dart';
+import 'package:flutter_movie/domain/usecases/delete_favourite_movie.dart';
+import 'package:flutter_movie/domain/usecases/get_favourite_movies.dart';
 import 'package:flutter_movie/domain/usecases/get_movie_cast.dart';
 import 'package:flutter_movie/domain/usecases/get_movie_detail.dart';
 import 'package:flutter_movie/domain/usecases/get_movie_video.dart';
 import 'package:flutter_movie/domain/usecases/get_seach_movies.dart';
+import 'package:flutter_movie/domain/usecases/save_movie.dart';
+import 'package:flutter_movie/presentation/blocs/favourite/favourite_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/movie_backdrop/movie_backdrop_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/movie_cast/movie_cast_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/movie_crousel/movie_crousel_bloc.dart';
@@ -54,6 +60,9 @@ Future init() async {
   getItInstance.registerLazySingleton<MovieRemoteDataSource>(
       () => MovieRemoteDataSourceImpl(getItInstance()));
 
+  getItInstance.registerLazySingleton<MovieLocalDataSource>(
+      () => MovieLocalDataSourceImpl());
+
   getItInstance
       .registerLazySingleton<GetTrending>(() => GetTrending(getItInstance()));
   getItInstance
@@ -63,7 +72,7 @@ Future init() async {
   getItInstance.registerLazySingleton<GetNowPlaying>(
       () => GetNowPlaying(getItInstance()));
   getItInstance.registerLazySingleton<MovieRepository>(
-      () => MovieRepositoryImpl(getItInstance()));
+      () => MovieRepositoryImpl(getItInstance(), getItInstance()));
 
   getItInstance.registerLazySingleton<GetMovieDetail>(
       () => GetMovieDetail(getItInstance()));
@@ -76,6 +85,18 @@ Future init() async {
 
   getItInstance.registerLazySingleton<GetSearchMovies>(
       () => GetSearchMovies(getItInstance()));
+
+  getItInstance.registerLazySingleton<GetFavouriteMovies>(
+      () => GetFavouriteMovies(getItInstance()));
+
+  getItInstance
+      .registerLazySingleton<SaveMovie>(() => SaveMovie(getItInstance()));
+
+  getItInstance.registerLazySingleton<CheckIfFavouriteMovie>(
+      () => CheckIfFavouriteMovie(getItInstance()));
+
+  getItInstance.registerLazySingleton<DeleteFavouriteMovie>(
+      () => DeleteFavouriteMovie(getItInstance()));
   // Factory methods registers a new object every time it is called in the application
   getItInstance.registerFactory<MovieCrouselBloc>(() => MovieCrouselBloc(
       getTrending: getItInstance(), movieBackdropBloc: getItInstance()));
@@ -100,10 +121,18 @@ Future init() async {
         getMovieDetail: getItInstance(),
         movieCastBloc: getItInstance(),
         movieVideoBloc: getItInstance(),
+        favouriteBloc: getItInstance(),
       ));
 
   getItInstance.registerFactory<SearchMoviesBloc>(
       () => SearchMoviesBloc(movieRepository: getItInstance()));
+
+  getItInstance.registerFactory<FavouriteBloc>(() => FavouriteBloc(
+        checkIfFavouriteMovie: getItInstance(),
+        deleteFavouriteMovie: getItInstance(),
+        getFavouriteMovies: getItInstance(),
+        saveMovie: getItInstance(),
+      ));
 
   // getItInstance
   //     .registerLazySingleton<MovieBackdropBloc>(() => MovieBackdropBloc());

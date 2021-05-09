@@ -6,6 +6,7 @@ import 'package:flutter_movie/common/constants/translate_constants.dart';
 import 'package:flutter_movie/common/extension/size_extension.dart';
 import 'package:flutter_movie/presentation/app_localizations.dart';
 import 'package:flutter_movie/common/extension/string_extension.dart';
+import 'package:flutter_movie/presentation/journeys/favourite/favourite_screen.dart';
 import 'package:flutter_movie/presentation/journeys/home/drawer/navigation_bar_expand_tile.dart';
 import 'package:flutter_movie/presentation/journeys/home/drawer/navigation_bar_tile.dart';
 import 'package:flutter_movie/presentation/journeys/home/language/language_bloc.dart';
@@ -43,7 +44,10 @@ class NavigationDrawer extends StatelessWidget {
           ),
           NavigationBarTile(
             title: TranslateConstants.favoriteMovies,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => FavouriteScreen()));
+            },
           ),
           NavigationBarExpandTile(
             title: TranslateConstants.language.t(context),

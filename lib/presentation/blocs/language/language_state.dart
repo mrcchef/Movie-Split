@@ -13,3 +13,10 @@ class LanguageChanged extends LanguageState {
 
   List<Object> get props => [locale.languageCode];
 }
+
+class LanguageError extends LanguageState {
+  final AppErrorType appErrorType;
+  LanguageError({this.appErrorType});
+
+  List<Object> get props => [appErrorType];
+}

@@ -24,6 +24,8 @@ import 'package:flutter_movie/domain/entities/app_error.dart';
 // movie repository
 
 // This class is extended by all the use cases in the project
+// Type -> Data type of Output
+// Params -> Data type of parameter
 abstract class UseCase<Type, Params> {
   Future<Either<AppError, Type>> call(Params params);
 }

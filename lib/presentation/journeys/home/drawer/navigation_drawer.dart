@@ -6,10 +6,11 @@ import 'package:flutter_movie/common/constants/translate_constants.dart';
 import 'package:flutter_movie/common/extension/size_extension.dart';
 import 'package:flutter_movie/presentation/app_localizations.dart';
 import 'package:flutter_movie/common/extension/string_extension.dart';
+import 'package:flutter_movie/presentation/blocs/language/language_bloc.dart';
 import 'package:flutter_movie/presentation/journeys/favourite/favourite_screen.dart';
 import 'package:flutter_movie/presentation/journeys/home/drawer/navigation_bar_expand_tile.dart';
 import 'package:flutter_movie/presentation/journeys/home/drawer/navigation_bar_tile.dart';
-import 'package:flutter_movie/presentation/journeys/home/language/language_bloc.dart';
+
 import 'package:flutter_movie/presentation/widgets/app_dialog.dart';
 import 'package:flutter_movie/presentation/widgets/movie_logo.dart';
 import 'package:wiredash/wiredash.dart';
@@ -52,8 +53,9 @@ class NavigationDrawer extends StatelessWidget {
           NavigationBarExpandTile(
             title: TranslateConstants.language.t(context),
             onPressed: (index) {
-              BlocProvider.of<LanguageBloc>(context).add(LanguageChangeEvent(
-                  languageEntity: Languages.language[index]));
+              BlocProvider.of<LanguageBloc>(context).add(
+                ToggleLanguageEvent(languageEntity: Languages.language[index]),
+              );
             },
             subList: Languages.language.map((e) => e.value).toList(),
           ),

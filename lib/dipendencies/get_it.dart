@@ -1,13 +1,19 @@
+import 'package:flutter_movie/data/data_sources/movie_language_data_source.dart';
 import 'package:flutter_movie/data/data_sources/movie_local_data_source.dart';
+import 'package:flutter_movie/data/repositories/app_repository_impl.dart';
+import 'package:flutter_movie/domain/repositories/app_repository.dart';
 import 'package:flutter_movie/domain/usecases/check_if_favourite_movie.dart';
 import 'package:flutter_movie/domain/usecases/delete_favourite_movie.dart';
 import 'package:flutter_movie/domain/usecases/get_favourite_movies.dart';
 import 'package:flutter_movie/domain/usecases/get_movie_cast.dart';
 import 'package:flutter_movie/domain/usecases/get_movie_detail.dart';
 import 'package:flutter_movie/domain/usecases/get_movie_video.dart';
+import 'package:flutter_movie/domain/usecases/get_preferred_language.dart';
 import 'package:flutter_movie/domain/usecases/get_seach_movies.dart';
 import 'package:flutter_movie/domain/usecases/save_favourite_movie.dart';
+import 'package:flutter_movie/domain/usecases/update_preferred_language.dart';
 import 'package:flutter_movie/presentation/blocs/favourite_movie/favourite_movie_bloc.dart';
+import 'package:flutter_movie/presentation/blocs/language/language_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/movie_backdrop/movie_backdrop_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/movie_cast/movie_cast_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/movie_crousel/movie_crousel_bloc.dart';
@@ -15,7 +21,7 @@ import 'package:flutter_movie/presentation/blocs/movie_detail/movie_detail_bloc.
 import 'package:flutter_movie/presentation/blocs/movie_tapped/movie_tapped_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/movie_video/movie_video_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/search_movies/search_movies_bloc.dart';
-import 'package:flutter_movie/presentation/journeys/home/language/language_bloc.dart';
+
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart';
 
@@ -63,6 +69,9 @@ Future init() async {
   getItInstance.registerLazySingleton<MovieLocalDataSource>(
       () => MovieLocalDataSourceImpl());
 
+  getItInstance.registerLazySingleton<MovieLanguageDataSource>(
+      () => MovieLanguageDataSourceImpl());
+
   getItInstance
       .registerLazySingleton<GetTrending>(() => GetTrending(getItInstance()));
   getItInstance
@@ -74,6 +83,9 @@ Future init() async {
   getItInstance.registerLazySingleton<MovieRepository>(() =>
       MovieRepositoryImpl(
           localDataSource: getItInstance(), remoteDataSource: getItInstance()));
+
+  getItInstance.registerLazySingleton<AppRepository>(
+      () => AppRepositoryImpl(movieLanguageDataSource: getItInstance()));
 
   getItInstance.registerLazySingleton<GetMovieDetail>(
       () => GetMovieDetail(getItInstance()));
@@ -99,19 +111,32 @@ Future init() async {
   getItInstance.registerLazySingleton<CheckIfFavouriteMovie>(
       () => CheckIfFavouriteMovie(getItInstance()));
 
+  getItInstance.registerLazySingleton<GetPreferredLanguage>(
+      () => GetPreferredLanguage(getItInstance()));
+
+  getItInstance.registerLazySingleton<UpdatePreferredLanguage>(
+      () => UpdatePreferredLanguage(getItInstance()));
+
   // Factory methods registers a new object every time it is called in the application
   getItInstance.registerFactory<MovieCrouselBloc>(() => MovieCrouselBloc(
       getTrending: getItInstance(), movieBackdropBloc: getItInstance()));
 
   getItInstance.registerFactory<MovieBackdropBloc>(() => MovieBackdropBloc());
 
-  getItInstance.registerFactory<MovieTappedBloc>(() => MovieTappedBloc(
-        getCommingSoon: getItInstance(),
-        getNowPlaying: getItInstance(),
-        getPopular: getItInstance(),
-      ));
+  getItInstance.registerFactory<MovieTappedBloc>(
+    () => MovieTappedBloc(
+      getCommingSoon: getItInstance(),
+      getNowPlaying: getItInstance(),
+      getPopular: getItInstance(),
+    ),
+  );
 
-  getItInstance.registerLazySingleton<LanguageBloc>(() => LanguageBloc());
+  getItInstance.registerLazySingleton<LanguageBloc>(
+    () => LanguageBloc(
+      getPreferredLanguage: getItInstance(),
+      updatePreferredLanguage: getItInstance(),
+    ),
+  );
 
   getItInstance.registerFactory<MovieCastBloc>(
       () => MovieCastBloc(getMovieCast: getItInstance()));

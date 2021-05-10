@@ -5,8 +5,8 @@ import 'package:flutter_movie/common/constants/languages.dart';
 import 'package:flutter_movie/common/scrren_utils/screen_util.dart';
 import 'package:flutter_movie/dipendencies/get_it.dart';
 import 'package:flutter_movie/presentation/app_localizations.dart';
+import 'package:flutter_movie/presentation/blocs/language/language_bloc.dart';
 import 'package:flutter_movie/presentation/journeys/home/home_screen.dart';
-import 'package:flutter_movie/presentation/journeys/home/language/language_bloc.dart';
 import 'package:flutter_movie/presentation/themes/app_color.dart';
 import 'package:flutter_movie/presentation/themes/theme_text.dart';
 import 'package:flutter_movie/presentation/wiredash_app.dart';
@@ -22,6 +22,7 @@ class _MovieAppState extends State<MovieApp> {
 
   void initState() {
     languageBloc = getItInstance<LanguageBloc>();
+    languageBloc.add(LoadPreferredLanguageEvent());
     super.initState();
   }
 

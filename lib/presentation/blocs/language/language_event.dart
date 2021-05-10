@@ -7,10 +7,12 @@ abstract class LanguageEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class LanguageChangeEvent extends LanguageEvent {
+class ToggleLanguageEvent extends LanguageEvent {
   final LanguageEntity languageEntity;
-  LanguageChangeEvent({this.languageEntity})
+  ToggleLanguageEvent({this.languageEntity})
       : assert(languageEntity != null, "local can not be null");
 
   List<Object> get props => [languageEntity.code];
 }
+
+class LoadPreferredLanguageEvent extends LanguageEvent {}

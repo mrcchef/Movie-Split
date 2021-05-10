@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_movie/common/constants/route_constants.dart';
 import 'package:flutter_movie/common/constants/size_constants.dart';
 import 'package:flutter_movie/data/core/api_constraint.dart';
 import 'package:flutter_movie/domain/entities/movie_entity.dart';
@@ -21,12 +22,9 @@ class FavouriteMovieItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(Sizes.dimen_12),
             child: InkWell(
               onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => MovieDetailScreen(
-                      movieDetailArgs: MovieDetailArgs(movieId: movieEntity.id),
-                    ),
-                  ),
+                Navigator.of(context).pushNamed(
+                  RouteConstants.detailScreenRoute,
+                  arguments: MovieDetailArgs(movieId: movieEntity.id),
                 );
               },
               child: CachedNetworkImage(

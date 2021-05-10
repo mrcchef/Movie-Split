@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_movie/common/constants/languages.dart';
+import 'package:flutter_movie/common/constants/route_constants.dart';
 import 'package:flutter_movie/common/constants/size_constants.dart';
 import 'package:flutter_movie/common/constants/translate_constants.dart';
 import 'package:flutter_movie/common/extension/size_extension.dart';
@@ -46,8 +47,7 @@ class NavigationDrawer extends StatelessWidget {
           NavigationBarTile(
             title: TranslateConstants.favoriteMovies,
             onPressed: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => FavouriteScreen()));
+              Navigator.of(context).pushNamed(RouteConstants.favouriteScreen);
             },
           ),
           NavigationBarExpandTile(

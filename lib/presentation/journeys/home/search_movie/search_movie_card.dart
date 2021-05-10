@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_movie/common/constants/route_constants.dart';
 import 'package:flutter_movie/data/core/api_constraint.dart';
 import 'package:flutter_movie/presentation/blocs/movie_detail/movie_detail_bloc.dart';
 import 'package:flutter_movie/presentation/journeys/home/movie_detail/movie_detail_args.dart';
@@ -18,12 +19,9 @@ class SearchMovieCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => MovieDetailScreen(
-              movieDetailArgs: MovieDetailArgs(movieId: movie.id),
-            ),
-          ),
+        Navigator.of(context).pushNamed(
+          RouteConstants.detailScreenRoute,
+          arguments: MovieDetailArgs(movieId: movie.id),
         );
       },
       child: Padding(

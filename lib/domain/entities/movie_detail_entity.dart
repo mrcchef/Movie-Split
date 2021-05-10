@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter_movie/domain/entities/movie_entity.dart';
 
 class MovieDetailEntity extends Equatable {
   final int id;

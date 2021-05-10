@@ -57,10 +57,20 @@ class BigPoster extends StatelessWidget {
         ),
       ),
       Positioned(
+<<<<<<< HEAD
           left: Sizes.dimen_20.w,
           right: Sizes.dimen_20.w,
           top: Sizes.dimen_10 + ScreenUtil.statusBarHeight,
           child: MovieDetailAppBar(movieDetailEntity: movieDetailEntity)),
+=======
+        left: Sizes.dimen_20.w,
+        right: Sizes.dimen_20.w,
+        top: Sizes.dimen_10 + ScreenUtil.statusBarHeight,
+        child: MovieDetailAppBar(
+          movieDetailEntity: movieDetailEntity,
+        ),
+      ),
+>>>>>>> e8c7ec1ca93c26cf50311cd7932685b51f4a5a08
     ]);
   }
 }

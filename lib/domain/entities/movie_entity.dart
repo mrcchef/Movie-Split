@@ -29,8 +29,11 @@ class MovieEntity extends Equatable {
   // If it is true then toString method of the object of the class will be overridden with props
   // If we print the object of class so usually the instance will be printed but now
   // instead of it list of attributes will print that are there in props getter
+<<<<<<< HEAD
   @override
   bool get stringify => true;
+=======
+>>>>>>> e8c7ec1ca93c26cf50311cd7932685b51f4a5a08
 
   factory MovieEntity.fromMovieDetailEntity(
       MovieDetailEntity movieDetailEntity) {

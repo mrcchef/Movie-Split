@@ -21,7 +21,11 @@ class MovieRepositoryImpl extends MovieRepository {
   final MovieRemoteDataSource remoteDataSource;
   final MovieLocalDataSource localDataSource;
 
+<<<<<<< HEAD
   MovieRepositoryImpl({this.remoteDataSource, this.localDataSource});
+=======
+  MovieRepositoryImpl(this.remoteDataSource, this.localDataSource);
+>>>>>>> e8c7ec1ca93c26cf50311cd7932685b51f4a5a08
 
   @override
   Future<Either<AppError, List<MovieModel>>> getTrending() async {
@@ -131,37 +135,63 @@ class MovieRepositoryImpl extends MovieRepository {
   }
 
   @override
+<<<<<<< HEAD
   Future<Either<AppError, bool>> checkIfFavouriteMovie(int id) async {
     try {
       final bool response = await localDataSource.checkIfFavouriteMovie(id);
       return Right(response);
     } on Exception catch (e) {
       return Left(AppError(AppErrorType.database));
+=======
+  Future<Either<AppError, List<MovieEntity>>> getFavouriteMovies() async {
+    try {
+      final movies = await localDataSource.getMovie();
+      return Right(movies);
+    } on Exception {
+      return left(AppError(AppErrorType.database));
+>>>>>>> e8c7ec1ca93c26cf50311cd7932685b51f4a5a08
     }
   }
 
   @override
+<<<<<<< HEAD
   Future<Either<AppError, void>> deleteFavouriteMovie(int id) async {
     try {
       final void response = await localDataSource.deleteFavouriteMovie(id);
       return Right(response);
     } on Exception catch (e) {
+=======
+  Future<Either<AppError, bool>> checkIfMovieFavourite(int id) async {
+    try {
+      final response = await localDataSource.checkIfMovieFavourite(id);
+      return Right(response);
+    } on Exception {
+>>>>>>> e8c7ec1ca93c26cf50311cd7932685b51f4a5a08
       return Left(AppError(AppErrorType.database));
     }
   }
 
   @override
+<<<<<<< HEAD
   Future<Either<AppError, List<MovieEntity>>> getFavouriteMovies() async {
     try {
       final List<MovieEntity> response =
           await localDataSource.getFavouriteMovies();
       return Right(response);
     } on Exception catch (e) {
+=======
+  Future<Either<AppError, void>> deleteFavouriteMovie(int id) async {
+    try {
+      final response = await localDataSource.deleteMovie(id);
+      return Right(response);
+    } on Exception {
+>>>>>>> e8c7ec1ca93c26cf50311cd7932685b51f4a5a08
       return Left(AppError(AppErrorType.database));
     }
   }
 
   @override
+<<<<<<< HEAD
   Future<Either<AppError, void>> saveFavouriteMovie(
       MovieEntity movieEntity) async {
     try {
@@ -169,6 +199,13 @@ class MovieRepositoryImpl extends MovieRepository {
           .saveFavouriteMovie(MovieTable.fromMovieEntity(movieEntity));
       return Right(response);
     } on Exception catch (e) {
+=======
+  Future<Either<AppError, void>> saveMovie(MovieEntity movie) async {
+    try {
+      final response = await localDataSource.saveMovie(movie);
+      return Right(response);
+    } on Exception {
+>>>>>>> e8c7ec1ca93c26cf50311cd7932685b51f4a5a08
       return Left(AppError(AppErrorType.database));
     }
   }

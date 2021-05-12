@@ -6,8 +6,13 @@ import 'package:flutter_movie/presentation/themes/app_color.dart';
 class Button extends StatelessWidget {
   final String buttonText;
   final Function onPressed;
+  final bool isEnabled;
 
-  const Button({Key key, @required this.buttonText, @required this.onPressed})
+  const Button(
+      {Key key,
+      @required this.buttonText,
+      @required this.onPressed,
+      this.isEnabled = true})
       : super(key: key);
 
   @override
@@ -17,13 +22,15 @@ class Button extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(Sizes.dimen_20.w),
         gradient: LinearGradient(
-          colors: [
-            AppColor.royalBlue,
-            AppColor.violet,
-          ],
+          colors: isEnabled
+              ? [
+                  AppColor.royalBlue,
+                  AppColor.violet,
+                ]
+              : [Colors.grey, Colors.grey],
         ),
       ),
-      child: FlatButton(
+      child: TextButton(
         onPressed: onPressed,
         child: Text(
           buttonText,

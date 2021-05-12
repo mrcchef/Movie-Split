@@ -4,7 +4,8 @@ import 'package:flutter_movie/presentation/blocs/movie_backdrop/movie_backdrop_b
 import 'package:flutter_movie/presentation/blocs/movie_crousel/movie_crousel_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/movie_tapped/movie_tapped_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/search_movies/search_movies_bloc.dart';
-import 'package:flutter_movie/presentation/journeys/home/drawer/navigation_drawer.dart';
+import 'package:flutter_movie/presentation/journeys/drawer/navigation_drawer.dart';
+
 import 'package:flutter_movie/presentation/widgets/app_error_widget.dart';
 import 'package:flutter_movie/presentation/journeys/home/movie_crousel/movie_crousel_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

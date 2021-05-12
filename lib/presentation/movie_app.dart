@@ -6,6 +6,7 @@ import 'package:flutter_movie/common/constants/route_constants.dart';
 import 'package:flutter_movie/common/scrren_utils/screen_util.dart';
 import 'package:flutter_movie/dipendencies/get_it.dart';
 import 'package:flutter_movie/presentation/app_localizations.dart';
+import 'package:flutter_movie/presentation/blocs/authentication/authentication_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/language/language_bloc.dart';
 import 'package:flutter_movie/presentation/journeys/home/home_screen.dart';
 import 'package:flutter_movie/presentation/routes.dart';
@@ -20,17 +21,20 @@ class MovieApp extends StatefulWidget {
 }
 
 class _MovieAppState extends State<MovieApp> {
-  LanguageBloc languageBloc;
+  LanguageBloc _languageBloc;
+  AuthenticationBloc _authenticationBloc;
   final navigatorKey = GlobalKey<NavigatorState>();
 
   void initState() {
-    languageBloc = getItInstance<LanguageBloc>();
-    languageBloc.add(LoadPreferredLanguageEvent());
+    _languageBloc = getItInstance<LanguageBloc>();
+    _languageBloc.add(LoadPreferredLanguageEvent());
+    _authenticationBloc = getItInstance<AuthenticationBloc>();
     super.initState();
   }
 
   void dispose() {
-    languageBloc?.close();
+    _languageBloc?.close();
+    _authenticationBloc?.close();
     super.dispose();
   }
 
@@ -46,10 +50,13 @@ class _MovieAppState extends State<MovieApp> {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init();
-    return BlocProvider<LanguageBloc>(
-      create: (context) => languageBloc,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<LanguageBloc>.value(value: _languageBloc),
+        BlocProvider<AuthenticationBloc>.value(value: _authenticationBloc),
+      ],
       child: BlocBuilder<LanguageBloc, LanguageState>(
-        bloc: languageBloc,
+        bloc: _languageBloc,
         builder: (ctx, state) {
           if (state is LanguageChanged) {
             return WiredashApp(
@@ -78,6 +85,7 @@ class _MovieAppState extends State<MovieApp> {
                 ],
                 builder: (context, child) {
                   // it will return the dynamic child widget of materialApp()
+                  // form the onGenerate Route
                   return child;
                 },
                 initialRoute: RouteConstants.initialRoute,

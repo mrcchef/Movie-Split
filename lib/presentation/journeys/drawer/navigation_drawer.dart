@@ -5,12 +5,10 @@ import 'package:flutter_movie/common/constants/route_constants.dart';
 import 'package:flutter_movie/common/constants/size_constants.dart';
 import 'package:flutter_movie/common/constants/translate_constants.dart';
 import 'package:flutter_movie/common/extension/size_extension.dart';
-import 'package:flutter_movie/presentation/app_localizations.dart';
 import 'package:flutter_movie/common/extension/string_extension.dart';
 import 'package:flutter_movie/presentation/blocs/language/language_bloc.dart';
-import 'package:flutter_movie/presentation/journeys/favourite/favourite_screen.dart';
-import 'package:flutter_movie/presentation/journeys/home/drawer/navigation_bar_expand_tile.dart';
-import 'package:flutter_movie/presentation/journeys/home/drawer/navigation_bar_tile.dart';
+import 'package:flutter_movie/presentation/journeys/drawer/navigation_bar_expand_tile.dart';
+import 'package:flutter_movie/presentation/journeys/drawer/navigation_bar_tile.dart';
 
 import 'package:flutter_movie/presentation/widgets/app_dialog.dart';
 import 'package:flutter_movie/presentation/widgets/movie_logo.dart';
@@ -65,6 +63,10 @@ class NavigationDrawer extends StatelessWidget {
               Navigator.of(context).pop();
               Wiredash.of(context).show();
             },
+          ),
+          NavigationBarTile(
+            title: "Logout",
+            onPressed: () {},
           ),
           NavigationBarTile(
             title: TranslateConstants.about,

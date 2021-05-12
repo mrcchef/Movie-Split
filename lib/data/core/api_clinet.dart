@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter_movie/data/core/unauthourized_exception.dart';
 import 'package:http/http.dart';
 
 import 'package:flutter_movie/data/core/api_constraint.dart';
@@ -26,7 +27,7 @@ class APIClient {
 
   dynamic get(String path, {Map<dynamic, dynamic> params}) async {
     final String url = getPath(path, params: params);
-    print(url);
+    print("get request url : $url");
     final response = await _client.get(
       Uri.parse(url),
       headers: {'Content-Type': 'application/json'}, // ?
@@ -40,5 +41,20 @@ class APIClient {
     } else {
       throw Exception(response.reasonPhrase);
     }
+  }
+
+  dynamic post(String path, {Map<dynamic, dynamic> params}) async {
+    final String url = getPath(path);
+    print("post request url : $url");
+    final response = await _client.post(Uri.parse(url),
+        body: json.encode(params),
+        headers: {'Content-Type': 'application/json'});
+
+    if (response.statusCode == 200) {
+      return json.decode(response.body);
+    } else if (response.statusCode == 401)
+      throw UnauthourizedException();
+    else
+      throw Exception(response.reasonPhrase);
   }
 }

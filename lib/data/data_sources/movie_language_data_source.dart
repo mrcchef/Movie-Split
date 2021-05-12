@@ -13,12 +13,12 @@ class MovieLanguageDataSourceImpl extends MovieLanguageDataSource {
   @override
   Future<String> getPreferredLanguage() async {
     Box box = await Hive.openBox(languageBox);
-    return box.get(preferred_language);
+    return box.get(preferredLanguage);
   }
 
   @override
   Future<void> updatePreferredLanguage(String languageCode) async {
     Box box = await Hive.openBox(languageBox);
-    unawaited(box.put(preferred_language, languageCode));
+    unawaited(box.put(preferredLanguage, languageCode));
   }
 }

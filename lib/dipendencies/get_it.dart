@@ -1,7 +1,11 @@
+import 'package:flutter_movie/data/data_sources/authentication_local_data_source.dart';
+import 'package:flutter_movie/data/data_sources/authentication_remote_data_source.dart';
 import 'package:flutter_movie/data/data_sources/movie_language_data_source.dart';
 import 'package:flutter_movie/data/data_sources/movie_local_data_source.dart';
 import 'package:flutter_movie/data/repositories/app_repository_impl.dart';
+import 'package:flutter_movie/data/repositories/authentication_repository_impl.dart';
 import 'package:flutter_movie/domain/repositories/app_repository.dart';
+import 'package:flutter_movie/domain/repositories/authentication_respository.dart';
 import 'package:flutter_movie/domain/usecases/check_if_favourite_movie.dart';
 import 'package:flutter_movie/domain/usecases/delete_favourite_movie.dart';
 import 'package:flutter_movie/domain/usecases/get_favourite_movies.dart';
@@ -10,8 +14,11 @@ import 'package:flutter_movie/domain/usecases/get_movie_detail.dart';
 import 'package:flutter_movie/domain/usecases/get_movie_video.dart';
 import 'package:flutter_movie/domain/usecases/get_preferred_language.dart';
 import 'package:flutter_movie/domain/usecases/get_seach_movies.dart';
+import 'package:flutter_movie/domain/usecases/login_user.dart';
+import 'package:flutter_movie/domain/usecases/logout_user.dart';
 import 'package:flutter_movie/domain/usecases/save_favourite_movie.dart';
 import 'package:flutter_movie/domain/usecases/update_preferred_language.dart';
+import 'package:flutter_movie/presentation/blocs/authentication/authentication_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/favourite_movie/favourite_movie_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/language/language_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/movie_backdrop/movie_backdrop_bloc.dart';
@@ -21,6 +28,7 @@ import 'package:flutter_movie/presentation/blocs/movie_detail/movie_detail_bloc.
 import 'package:flutter_movie/presentation/blocs/movie_tapped/movie_tapped_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/movie_video/movie_video_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/search_movies/search_movies_bloc.dart';
+import 'package:flutter_movie/data/repositories/movie_repository_impl.dart';
 
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart';
@@ -72,6 +80,32 @@ Future init() async {
   getItInstance.registerLazySingleton<MovieLanguageDataSource>(
       () => MovieLanguageDataSourceImpl());
 
+  getItInstance.registerLazySingleton<AuthenticationLocalDataSourceImpl>(
+      () => AuthenticationLocalDataSourceImpl());
+
+  getItInstance.registerLazySingleton<AuthenticationRemoteDataSourceImpl>(
+      () => AuthenticationRemoteDataSourceImpl(getItInstance()));
+
+  getItInstance.registerLazySingleton<MovieRepository>(() =>
+      MovieRepositoryImpl(
+          localDataSource: getItInstance(), remoteDataSource: getItInstance()));
+
+  getItInstance.registerLazySingleton<AppRepository>(
+      () => AppRepositoryImpl(movieLanguageDataSource: getItInstance()));
+
+  getItInstance.registerLazySingleton<AuthenticationRepositoryImpl>(
+    () => AuthenticationRepositoryImpl(
+      authenticationLocalDataSourceImpl: getItInstance(),
+      authenticationRemoteDataSourceImpl: getItInstance(),
+    ),
+  );
+
+  getItInstance
+      .registerLazySingleton<LoginUser>(() => LoginUser(getItInstance()));
+
+  getItInstance
+      .registerLazySingleton<LogoutUser>(() => LogoutUser(getItInstance()));
+
   getItInstance
       .registerLazySingleton<GetTrending>(() => GetTrending(getItInstance()));
   getItInstance
@@ -80,12 +114,6 @@ Future init() async {
       () => GetCommingSoon(getItInstance()));
   getItInstance.registerLazySingleton<GetNowPlaying>(
       () => GetNowPlaying(getItInstance()));
-  getItInstance.registerLazySingleton<MovieRepository>(() =>
-      MovieRepositoryImpl(
-          localDataSource: getItInstance(), remoteDataSource: getItInstance()));
-
-  getItInstance.registerLazySingleton<AppRepository>(
-      () => AppRepositoryImpl(movieLanguageDataSource: getItInstance()));
 
   getItInstance.registerLazySingleton<GetMovieDetail>(
       () => GetMovieDetail(getItInstance()));
@@ -162,6 +190,14 @@ Future init() async {
       saveFavouriteMovie: getItInstance(),
     ),
   );
+
+  getItInstance.registerFactory<AuthenticationBloc>(
+    () => AuthenticationBloc(
+      loginUser: getItInstance(),
+      logoutUser: getItInstance(),
+    ),
+  );
+
   // getItInstance
   //     .registerLazySingleton<MovieBackdropBloc>(() => MovieBackdropBloc());
 }

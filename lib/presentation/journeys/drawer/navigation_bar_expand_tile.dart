@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_movie/presentation/journeys/home/drawer/navigation_bar_expand_children_tile.dart';
+import 'package:flutter_movie/presentation/journeys/drawer/navigation_bar_expand_children_tile.dart';
 
 class NavigationBarExpandTile extends StatelessWidget {
   final String title;

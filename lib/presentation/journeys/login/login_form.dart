@@ -87,6 +87,7 @@ class _LoginFormState extends State<LoginForm> {
                     style: Theme.of(context).textTheme.subtitle1,
                   );
                 }
+                print('BlocCosumer1');
                 return const SizedBox.shrink();
               },
               listenWhen: (previous, current) => current is LoginSuccess,
@@ -99,14 +100,19 @@ class _LoginFormState extends State<LoginForm> {
             ),
             Button(
               buttonText: 'Login',
-              onPressed: () {
-                BlocProvider.of<AuthenticationBloc>(context).add(
-                  LoginInitiateEvent(
-                    password: passwordController.text,
-                    username: usernameController.text,
-                  ),
-                );
-              },
+              onPressed: isEnabledLogin
+                  ? () {
+                      print(usernameController.text);
+                      print(passwordController.text);
+
+                      BlocProvider.of<AuthenticationBloc>(context).add(
+                        LoginInitiateEvent(
+                          password: passwordController.text,
+                          username: usernameController.text,
+                        ),
+                      );
+                    }
+                  : null,
               isEnabled: isEnabledLogin,
             ),
           ],

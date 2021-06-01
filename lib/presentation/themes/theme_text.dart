@@ -7,6 +7,7 @@ import 'package:flutter_movie/common/constants/size_constants.dart';
 class ThemeText {
   // constant constructors are created for increasing performance of the app
   // classes with constat constructors does not rebuild
+  // private constuctors does to intantiate
   const ThemeText._();
 
   static TextTheme get _poppinsTextTheme => GoogleFonts.poppinsTextTheme();

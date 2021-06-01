@@ -64,10 +64,10 @@ class NavigationDrawer extends StatelessWidget {
               Wiredash.of(context).show();
             },
           ),
-          NavigationBarTile(
-            title: "Logout",
-            onPressed: () {},
-          ),
+          // NavigationBarTile(
+          //   title: "Logout",
+          //   onPressed: () {},
+          // ),
           NavigationBarTile(
             title: TranslateConstants.about,
             onPressed: () {

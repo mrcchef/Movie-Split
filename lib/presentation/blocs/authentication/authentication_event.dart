@@ -17,5 +17,3 @@ class LoginInitiateEvent extends AuthenticationEvent {
   @override
   List<Object> get props => [username, password];
 }
-
-class LogoutInitiateEvent extends AuthenticationEvent {}

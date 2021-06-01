@@ -27,11 +27,15 @@ class AuthenticationBloc
       final eitherResponse = await loginUser(
         LoginRequestParams(username: event.username, password: event.password),
       );
-      eitherResponse.fold((error) {
+
+      yield eitherResponse.fold((error) {
         final String message = _getErrorMessage(error.errorType);
         print('message:$message');
         return AuthenticationError(message: message);
-      }, (r) => LoginSuccess());
+      }, (r) {
+        print("Success");
+        return LoginSuccess();
+      });
     }
   }
 

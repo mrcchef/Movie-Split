@@ -84,7 +84,7 @@ class _LoginFormState extends State<LoginForm> {
                   print('BlocCosumer');
                   return Text(
                     state.message,
-                    style: Theme.of(context).textTheme.subtitle1,
+                    style: Theme.of(context).textTheme.orangeSubtitle2,
                   );
                 }
                 print('BlocCosumer1');

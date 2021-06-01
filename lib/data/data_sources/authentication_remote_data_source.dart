@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_movie/data/core/api_clinet.dart';
 import 'package:flutter_movie/data/models/request_token_model.dart';
 
@@ -44,5 +45,14 @@ class AuthenticationRemoteDataSourceImpl
     // If true we will return session id
     // other wise we will return null and manage null in further
     return responseBody['success'] ? responseBody['session_id'] : null;
+  }
+
+  Future<bool> deleteSession(String sessionId) async {
+    final responseBody = await apiClient.deleteWithBody(
+        'authentication/session',
+        params: {"session_id": sessionId});
+
+    // If null then it will return false
+    return responseBody['success'] ?? false;
   }
 }

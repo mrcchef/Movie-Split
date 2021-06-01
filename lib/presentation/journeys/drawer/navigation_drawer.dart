@@ -6,6 +6,7 @@ import 'package:flutter_movie/common/constants/size_constants.dart';
 import 'package:flutter_movie/common/constants/translate_constants.dart';
 import 'package:flutter_movie/common/extension/size_extension.dart';
 import 'package:flutter_movie/common/extension/string_extension.dart';
+import 'package:flutter_movie/presentation/blocs/authentication/authentication_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/language/language_bloc.dart';
 import 'package:flutter_movie/presentation/journeys/drawer/navigation_bar_expand_tile.dart';
 import 'package:flutter_movie/presentation/journeys/drawer/navigation_bar_tile.dart';
@@ -64,10 +65,20 @@ class NavigationDrawer extends StatelessWidget {
               Wiredash.of(context).show();
             },
           ),
-          // NavigationBarTile(
-          //   title: "Logout",
-          //   onPressed: () {},
-          // ),
+          BlocListener<AuthenticationBloc, AuthenticationState>(
+            listenWhen: (previous, current) => current is LogoutSuccess,
+            listener: (context, state) {
+              print('reached');
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                  RouteConstants.initialRoute, (route) => false);
+            },
+            child: NavigationBarTile(
+              title: TranslateConstants.logout,
+              onPressed: () {
+                BlocProvider.of<AuthenticationBloc>(context).add(LogoutEvent());
+              },
+            ),
+          ),
           NavigationBarTile(
             title: TranslateConstants.about,
             onPressed: () {

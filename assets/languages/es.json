@@ -11,5 +11,6 @@
     "retry": "Rever",
     "somethingWentWrong": "Algo salió mal...",
     "checkNetwork": "Verifique su conexión de red y presione el botón Reintentar o colóquelo como error presionando el botón Comentarios.",
-    "noMovies": "Lo siento, no hay películas en esta sección."
+    "noMovies": "Lo siento, no hay películas en esta sección.",
+    "logout":"Logout"
 }

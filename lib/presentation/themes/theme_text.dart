@@ -72,4 +72,6 @@ extension TextThemeExtension on TextTheme {
         color: AppColor.vulcan,
         fontWeight: FontWeight.bold,
       );
+
+  TextStyle get orangeSubtitle2 => subtitle2.copyWith(color: Colors.orange);
 }

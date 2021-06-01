@@ -5,6 +5,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_movie/domain/entities/app_error.dart';
 import 'package:flutter_movie/domain/entities/login_request_params.dart';
+import 'package:flutter_movie/domain/entities/no_params.dart';
 import 'package:flutter_movie/domain/usecases/login_user.dart';
 import 'package:flutter_movie/domain/usecases/logout_user.dart';
 
@@ -36,6 +37,10 @@ class AuthenticationBloc
         print("Success");
         return LoginSuccess();
       });
+    } else if (event is LogoutEvent) {
+      await logoutUser(NoParams());
+      print("now yielding logout success");
+      yield LogoutSuccess();
     }
   }
 

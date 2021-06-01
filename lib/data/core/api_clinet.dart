@@ -57,4 +57,19 @@ class APIClient {
     else
       throw Exception(response.reasonPhrase);
   }
+
+  dynamic deleteWithBody(String path, {Map<dynamic, dynamic> params}) async {
+    Request request = Request('DELETE', Uri.parse(getPath(path)));
+    request.headers['Content-Type'] = 'application/json';
+    request.body = jsonEncode(params);
+
+    final response = await _client.send(request).then(
+          (value) => Response.fromStream(value),
+        );
+    print(response.statusCode);
+    if (response.statusCode == 200)
+      return json.decode(response.body);
+    else
+      throw Exception(response.reasonPhrase);
+  }
 }

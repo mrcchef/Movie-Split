@@ -18,4 +18,27 @@ It's a movie application that I have created by using the Flutter framework. I a
 - Many more to come.
 
 ## Images
--[](/app_images/authentication_sceen.jpeg)
+#### Authentication Screen 
+<img src="app_images/authentication_sceen.jpeg" alt="drawing" width="300"/>
+
+#### Home Screen
+<img src="app_images/home_screen.jpeg" alt="drawing" width="300"/>
+
+#### Detail Screen
+<img src="app_images/details_screen.jpeg" alt="drawing" width="300"/>
+
+#### Detail Bottom Screen
+<img src="app_images/details_bottom_screen.jpeg" alt="drawing" width="300"/>
+
+#### Drawer
+<img src="app_images/drawer_screen.jpeg" alt="drawing" width="300"/>
+
+#### Favourite Screen
+<img src="app_images/favourite_screen.jpeg" alt="drawing" width="300"/>
+
+#### Feedback Screen
+<img src="app_images/feedback_screen.jpeg" alt="drawing" width="300"/>
+
+#### Search Screen
+<img src="app_images/search_screen.jpeg" alt="drawing" width="300"/>
+

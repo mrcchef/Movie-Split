@@ -1,6 +1,6 @@
 # Movie Split
 
-It's a movie application that I have created by using the Flutter framework. I am developing the application for Education purposes learning flutter concepts from the Youtube Channel "Techie Blossom" and If you like it you can really follow him.
+It's a movie application that I have created by using the Flutter framework. I am developing the application for Education purposes and learning flutter concepts from the Youtube Channel "Techie Blossom" and If you like it you can really follow him.
 
 ## Highlights 
 

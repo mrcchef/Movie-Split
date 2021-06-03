@@ -68,7 +68,6 @@ class NavigationDrawer extends StatelessWidget {
           BlocListener<AuthenticationBloc, AuthenticationState>(
             listenWhen: (previous, current) => current is LogoutSuccess,
             listener: (context, state) {
-              print('reached');
               Navigator.of(context).pushNamedAndRemoveUntil(
                   RouteConstants.initialRoute, (route) => false);
             },

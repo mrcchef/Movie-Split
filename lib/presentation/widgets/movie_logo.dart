@@ -16,7 +16,7 @@ class MovieLogo extends StatelessWidget {
     return Image.asset(
       'assets/pngs/logo.png',
       color: Colors.white,
-      height: height.h,
+      height: height,
     );
   }
 }

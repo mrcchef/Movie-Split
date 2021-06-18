@@ -28,7 +28,7 @@ class CustomSearchDelegate extends SearchDelegate {
   List<Widget> buildActions(BuildContext context) {
     return [
       Padding(
-        padding: const EdgeInsets.all(Sizes.dimen_4),
+        padding: EdgeInsets.all(Sizes.dimen_8.w),
         child: GestureDetector(
           onTap: () {
             if (query.isNotEmpty) query = '';
@@ -36,7 +36,7 @@ class CustomSearchDelegate extends SearchDelegate {
           child: Icon(
             Icons.clear,
             color: query.isEmpty ? Colors.grey : AppColor.royalBlue,
-            size: Sizes.dimen_20.h,
+            size: Sizes.dimen_32.w,
           ),
         ),
       ),
@@ -50,14 +50,13 @@ class CustomSearchDelegate extends SearchDelegate {
       child: Icon(
         Icons.arrow_back_ios,
         color: Colors.white,
-        size: Sizes.dimen_20.h,
+        size: Sizes.dimen_32.w,
       ),
     );
   }
 
   @override
   Widget buildResults(BuildContext context) {
-    // if (query.isNotEmpty)
     searchMoviesBloc.add(LoadSearchMovie(searchTerm: query));
 
     return BlocBuilder<SearchMoviesBloc, SearchMoviesState>(

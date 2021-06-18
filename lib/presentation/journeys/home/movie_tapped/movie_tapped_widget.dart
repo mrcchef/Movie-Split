@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_movie/common/constants/size_constants.dart';
+import 'package:flutter_movie/common/extension/size_extension.dart';
 import 'package:flutter_movie/common/constants/translate_constants.dart';
 import 'package:flutter_movie/domain/entities/movie_entity.dart';
 import 'package:flutter_movie/common/extension/string_extension.dart';
@@ -8,6 +9,7 @@ import 'package:flutter_movie/presentation/blocs/movie_tapped/movie_tapped_bloc.
 import 'package:flutter_movie/presentation/journeys/home/movie_tapped/movie_listview_builder.dart';
 import 'package:flutter_movie/presentation/journeys/home/movie_tapped/movie_tapped_constants.dart';
 import 'package:flutter_movie/presentation/journeys/home/movie_tapped/tab_title_widget.dart';
+import 'package:flutter_movie/presentation/journeys/loading/loading_circle.dart';
 import 'package:flutter_movie/presentation/widgets/app_error_widget.dart';
 
 class MovieTappedWidget extends StatefulWidget {
@@ -84,7 +86,12 @@ class _MovieTappedWidgetState extends State<MovieTappedWidget> {
                           .add(TabChangedEvent(tabIndex: state.tabIndex));
                     },
                   ),
-                )
+                ),
+              if (state is MovieTappedLoadingState)
+                Expanded(
+                    child: LoadingCircle(
+                  size: Sizes.dimen_100.w,
+                ))
             ],
           ),
         );

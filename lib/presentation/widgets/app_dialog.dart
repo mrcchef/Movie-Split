@@ -28,7 +28,7 @@ class AppDialog extends StatelessWidget {
         borderRadius: BorderRadius.circular(Sizes.dimen_20.w),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(Sizes.dimen_10.w),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -37,7 +37,7 @@ class AppDialog extends StatelessWidget {
               style: Theme.of(context).textTheme.headline5,
             ),
             SizedBox(
-              height: Sizes.dimen_8,
+              height: Sizes.dimen_8.w,
             ),
             Text(
               description.t(context),
@@ -45,7 +45,7 @@ class AppDialog extends StatelessWidget {
               style: Theme.of(context).textTheme.bodyText2,
             ),
             SizedBox(
-              height: Sizes.dimen_8,
+              height: Sizes.dimen_8.w,
             ),
             if (image != null) image,
             Button(

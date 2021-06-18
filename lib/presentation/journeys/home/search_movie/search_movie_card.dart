@@ -25,22 +25,22 @@ class SearchMovieCard extends StatelessWidget {
         );
       },
       child: Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: Sizes.dimen_4,
-          horizontal: Sizes.dimen_8,
+        padding: EdgeInsets.symmetric(
+          vertical: Sizes.dimen_4.w,
+          horizontal: Sizes.dimen_8.w,
         ),
         child: Row(
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.circular(Sizes.dimen_8),
+              borderRadius: BorderRadius.circular(Sizes.dimen_8.w),
               child: CachedNetworkImage(
                 imageUrl: "${APIConstants.BASE_IMAGE_URL}/${movie.posterPath}",
-                width: Sizes.dimen_100.w,
+                width: Sizes.dimen_110.w,
                 // fit: BoxFit.cover,
               ),
             ),
             SizedBox(
-              width: Sizes.dimen_10,
+              width: Sizes.dimen_6.w,
             ),
             Expanded(
               child: Column(

@@ -8,7 +8,9 @@ import 'package:flutter_movie/dipendencies/get_it.dart';
 import 'package:flutter_movie/presentation/app_localizations.dart';
 import 'package:flutter_movie/presentation/blocs/authentication/authentication_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/language/language_bloc.dart';
+import 'package:flutter_movie/presentation/blocs/loading/loading_bloc.dart';
 import 'package:flutter_movie/presentation/journeys/home/home_screen.dart';
+import 'package:flutter_movie/presentation/journeys/loading/loading_screen.dart';
 import 'package:flutter_movie/presentation/routes.dart';
 import 'package:flutter_movie/presentation/themes/app_color.dart';
 import 'package:flutter_movie/presentation/themes/theme_text.dart';
@@ -23,11 +25,13 @@ class MovieApp extends StatefulWidget {
 class _MovieAppState extends State<MovieApp> {
   LanguageBloc _languageBloc;
   AuthenticationBloc _authenticationBloc;
+  LoadingBloc _loadingBloc;
   final navigatorKey = GlobalKey<NavigatorState>();
 
   void initState() {
     _languageBloc = getItInstance<LanguageBloc>();
     _languageBloc.add(LoadPreferredLanguageEvent());
+    _loadingBloc = getItInstance<LoadingBloc>();
     _authenticationBloc = getItInstance<AuthenticationBloc>();
     super.initState();
   }
@@ -35,6 +39,7 @@ class _MovieAppState extends State<MovieApp> {
   void dispose() {
     _languageBloc?.close();
     _authenticationBloc?.close();
+    _loadingBloc?.close();
     super.dispose();
   }
 
@@ -49,11 +54,16 @@ class _MovieAppState extends State<MovieApp> {
 
   @override
   Widget build(BuildContext context) {
+    // final double height = MediaQuery.of(context).size.height;
+    // final double width = MediaQuery.of(context).size.width;
+    // print(width);
+    // print(height);
     ScreenUtil.init();
     return MultiBlocProvider(
       providers: [
         BlocProvider<LanguageBloc>.value(value: _languageBloc),
         BlocProvider<AuthenticationBloc>.value(value: _authenticationBloc),
+        BlocProvider<LoadingBloc>.value(value: _loadingBloc),
       ],
       child: BlocBuilder<LanguageBloc, LanguageState>(
         bloc: _languageBloc,
@@ -86,7 +96,11 @@ class _MovieAppState extends State<MovieApp> {
                 builder: (context, child) {
                   // it will return the dynamic child widget of materialApp()
                   // form the onGenerate Route
-                  return child;
+                  return LoadingScreen(
+                    screen: child,
+                    loadingBloc: _loadingBloc,
+                  );
+                  // return child;
                 },
                 initialRoute: RouteConstants.initialRoute,
                 onGenerateRoute: (RouteSettings settings) {

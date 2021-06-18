@@ -18,21 +18,21 @@ class CastWidget extends StatelessWidget {
           final List<MovieCastEntity> cast = state.cast;
           print(cast.length);
           return Container(
-            height: Sizes.dimen_150.h,
+            height: Sizes.dimen_260.w,
             child: ListView.builder(
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               itemBuilder: (ctx, index) {
                 return Container(
-                  height: Sizes.dimen_150.h,
-                  width: Sizes.dimen_110.h,
+                  height: Sizes.dimen_200.w,
+                  width: Sizes.dimen_150.w,
                   child: Card(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(Sizes.dimen_10),
                     ),
                     elevation: 1,
-                    margin: const EdgeInsets.symmetric(
-                        horizontal: Sizes.dimen_8, vertical: Sizes.dimen_4),
+                    margin: EdgeInsets.symmetric(
+                        horizontal: Sizes.dimen_8.w, vertical: Sizes.dimen_4.w),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -42,17 +42,17 @@ class CastWidget extends StatelessWidget {
                             topRight: Radius.circular(Sizes.dimen_10),
                           ),
                           child: CachedNetworkImage(
-                            height: Sizes.dimen_110.h,
-                            width: Sizes.dimen_110.h,
+                            height: Sizes.dimen_200.w,
+                            width: Sizes.dimen_150.w,
                             imageUrl:
                                 '${APIConstants.BASE_IMAGE_URL}${cast[index].posterPath}',
                             fit: BoxFit.fitWidth,
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: Sizes.dimen_1,
-                              horizontal: Sizes.dimen_8),
+                          padding: EdgeInsets.symmetric(
+                              vertical: Sizes.dimen_1.w,
+                              horizontal: Sizes.dimen_8.w),
                           child: Text(
                             cast[index].name,
                             overflow: TextOverflow.fade,
@@ -62,9 +62,9 @@ class CastWidget extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: Sizes.dimen_1,
-                              horizontal: Sizes.dimen_8),
+                          padding: EdgeInsets.symmetric(
+                              vertical: Sizes.dimen_1.w,
+                              horizontal: Sizes.dimen_8.w),
                           child: Text(
                             cast[index].character,
                             overflow: TextOverflow.fade,

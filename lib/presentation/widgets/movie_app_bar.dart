@@ -13,7 +13,7 @@ class MovieAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-        top: Sizes.dimen_4.h + ScreenUtil.statusBarHeightPx,
+        top: Sizes.dimen_4.w + Sizes.dimen_48.w,
         left: Sizes.dimen_16.w,
         right: Sizes.dimen_16.w,
       ),
@@ -27,11 +27,11 @@ class MovieAppBar extends StatelessWidget {
             onPressed: () {
               Scaffold.of(context).openDrawer();
             },
-            iconSize: Sizes.dimen_12.h,
+            iconSize: Sizes.dimen_24.w,
           ),
           Expanded(
             child: MovieLogo(
-              height: Sizes.dimen_14,
+              height: Sizes.dimen_32.w,
             ),
           ),
           IconButton(
@@ -42,7 +42,7 @@ class MovieAppBar extends StatelessWidget {
                   delegate: CustomSearchDelegate(
                       BlocProvider.of<SearchMoviesBloc>(context)));
             },
-            iconSize: Sizes.dimen_12.h,
+            iconSize: Sizes.dimen_24.w,
             color: Colors.white,
           ),
         ],

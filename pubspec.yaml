@@ -35,6 +35,8 @@ dependencies:
   wiredash: ^0.6.2
   hive: ^2.0.4
   hive_flutter: ^1.0.0
+  flare_flutter: ^3.0.1
+  rive: ^0.7.18
 
   flutter_localizations:
     sdk: flutter
@@ -67,6 +69,7 @@ flutter:
     - assets/pngs/
     - assets/svgs/
     - assets/languages/
+    - assets/animations/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

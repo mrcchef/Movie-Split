@@ -8,6 +8,7 @@ import 'package:flutter_movie/domain/entities/login_request_params.dart';
 import 'package:flutter_movie/domain/entities/no_params.dart';
 import 'package:flutter_movie/domain/usecases/login_user.dart';
 import 'package:flutter_movie/domain/usecases/logout_user.dart';
+import 'package:flutter_movie/presentation/blocs/loading/loading_bloc.dart';
 
 part 'authentication_event.dart';
 part 'authentication_state.dart';
@@ -16,8 +17,12 @@ class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
   final LoginUser loginUser;
   final LogoutUser logoutUser;
+  final LoadingBloc loadingBloc;
 
-  AuthenticationBloc({@required this.loginUser, @required this.logoutUser})
+  AuthenticationBloc(
+      {@required this.loginUser,
+      @required this.logoutUser,
+      @required this.loadingBloc})
       : super(AuthenticationInitial());
 
   @override
@@ -25,6 +30,7 @@ class AuthenticationBloc
     AuthenticationEvent event,
   ) async* {
     if (event is LoginInitiateEvent) {
+      loadingBloc.add(LoadingStartEvent());
       final eitherResponse = await loginUser(
         LoginRequestParams(username: event.username, password: event.password),
       );
@@ -37,6 +43,7 @@ class AuthenticationBloc
         print("Success");
         return LoginSuccess();
       });
+      loadingBloc.add(LoadingEndEvent());
     } else if (event is LogoutEvent) {
       await logoutUser(NoParams());
       print("now yielding logout success");

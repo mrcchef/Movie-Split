@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_movie/common/constants/size_constants.dart';
 import 'package:flutter_movie/common/extension/size_extension.dart';
+import 'package:flutter_movie/common/scrren_utils/screen_util.dart';
 import 'package:flutter_movie/dipendencies/get_it.dart';
 import 'package:flutter_movie/presentation/blocs/loading/loading_bloc.dart';
 import 'package:flutter_movie/presentation/journeys/loading/loading_circle.dart';
@@ -16,23 +17,27 @@ class LoadingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LoadingBloc, LoadingState>(
+    // double height = MediaQuery.of(context).size.height;
+    // double width = MediaQuery.of(context).size.width;
+    // ScreenUtil.init(height: height, width: width);
+    return Scaffold(
+      body: BlocBuilder<LoadingBloc, LoadingState>(
         bloc: loadingBloc,
         builder: (context, state) {
           print("Loading Screen: $state");
-          return Scaffold(
-            body: Stack(fit: StackFit.expand, children: [
-              screen,
-              if (state is LoadingStartState)
-                Container(
-                  decoration:
-                      BoxDecoration(color: AppColor.vulcan.withOpacity(0.8)),
-                  child: Center(
-                    child: LoadingCircle(size: Sizes.dimen_230.w),
-                  ),
+          return Stack(fit: StackFit.expand, children: [
+            screen,
+            if (state is LoadingStartState)
+              Container(
+                decoration:
+                    BoxDecoration(color: AppColor.vulcan.withOpacity(0.8)),
+                child: Center(
+                  child: LoadingCircle(size: Sizes.dimen_230.w),
                 ),
-            ]),
-          );
-        });
+              ),
+          ]);
+        },
+      ),
+    );
   }
 }

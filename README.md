@@ -1,6 +1,6 @@
 # Movie Split
 
-It's a movie application that I have created by using the Flutter framework. I am developing the application for Education purposes learning flutter concepts from the Youtube Channel "Techie Blossom" and If you like it you can really follow him.
+It's a movie application that I have created by using the Flutter framework. I am developing the application for Education purposes and learning flutter concepts from the Youtube Channel "Techie Blossom" and If you like it you can really follow him.
 
 ## Highlights 
 
@@ -16,3 +16,29 @@ It's a movie application that I have created by using the Flutter framework. I a
 - Has the support of local database storage using Hive 
 - Implemented favorite movies feature
 - Many more to come.
+
+## Images
+#### Authentication Screen 
+<img src="app_images/authentication_sceen.jpeg" alt="drawing" width="300"/>
+
+#### Home Screen
+<img src="app_images/home_screen.jpeg" alt="drawing" width="300"/>
+
+#### Detail Screen
+<img src="app_images/details_screen.jpeg" alt="drawing" width="300"/>
+
+#### Detail Bottom Screen
+<img src="app_images/details_bottom_screen.jpeg" alt="drawing" width="300"/>
+
+#### Drawer
+<img src="app_images/drawer_screen.jpeg" alt="drawing" width="300"/>
+
+#### Favourite Screen
+<img src="app_images/favourite_screen.jpeg" alt="drawing" width="300"/>
+
+#### Feedback Screen
+<img src="app_images/feedback_screen.jpeg" alt="drawing" width="300"/>
+
+#### Search Screen
+<img src="app_images/search_screen.jpeg" alt="drawing" width="300"/>
+

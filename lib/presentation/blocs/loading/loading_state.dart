@@ -1,14 +1,14 @@
-part of 'loading_bloc.dart';
+// part of 'loading_bloc.dart';
 
-abstract class LoadingState extends Equatable {
-  const LoadingState();
+// abstract class LoadingState extends Equatable {
+//   const LoadingState();
 
-  @override
-  List<Object> get props => [];
-}
+//   @override
+//   List<Object> get props => [];
+// }
 
-class LoadingInitial extends LoadingState {}
+// class LoadingInitial extends LoadingState {}
 
-class LoadingStartState extends LoadingState {}
+// class LoadingStartState extends LoadingState {}
 
-class LoadingEndState extends LoadingState {}
+// class LoadingEndState extends LoadingState {}

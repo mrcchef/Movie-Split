@@ -29,8 +29,8 @@ class _MovieAppState extends State<MovieApp> {
   final navigatorKey = GlobalKey<NavigatorState>();
 
   void initState() {
-    _languageBloc = getItInstance<LanguageBloc>();
-    _languageBloc.add(LoadPreferredLanguageEvent());
+    _languageBloc = getItInstance<LanguageCubit>();
+    _languageBloc.loadPreferredLanguageEvent();
     _loadingCubit = getItInstance<LoadingCubit>();
     _authenticationBloc = getItInstance<AuthenticationBloc>();
     super.initState();

@@ -21,7 +21,7 @@ import 'package:flutter_movie/domain/usecases/update_preferred_language.dart';
 import 'package:flutter_movie/presentation/blocs/authentication/authentication_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/favourite_movie/favourite_movie_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/language/language_bloc.dart';
-import 'package:flutter_movie/presentation/blocs/loading/loading_bloc.dart';
+import 'package:flutter_movie/presentation/blocs/loading/loading_cubit.dart';
 import 'package:flutter_movie/presentation/blocs/movie_backdrop/movie_backdrop_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/movie_cast/movie_cast_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/movie_crousel/movie_crousel_bloc.dart';
@@ -157,7 +157,7 @@ Future init() async {
       getCommingSoon: getItInstance(),
       getNowPlaying: getItInstance(),
       getPopular: getItInstance(),
-      loadingBloc: getItInstance(),
+      loadingCubit: getItInstance(),
     ),
   );
 
@@ -179,7 +179,7 @@ Future init() async {
         movieCastBloc: getItInstance(),
         movieVideoBloc: getItInstance(),
         favouriteMovieBloc: getItInstance(),
-        loadingBloc: getItInstance(),
+        loadingCubit: getItInstance(),
       ));
 
   getItInstance.registerFactory<SearchMoviesBloc>(
@@ -198,9 +198,9 @@ Future init() async {
     () => AuthenticationBloc(
       loginUser: getItInstance(),
       logoutUser: getItInstance(),
-      loadingBloc: getItInstance(),
+      loadingCubit: getItInstance(),
     ),
   );
 
-  getItInstance.registerLazySingleton<LoadingBloc>(() => LoadingBloc());
+  getItInstance.registerLazySingleton<LoadingCubit>(() => LoadingCubit());
 }

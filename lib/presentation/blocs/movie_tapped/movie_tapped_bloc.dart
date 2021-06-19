@@ -33,7 +33,7 @@ class MovieTappedBloc extends Bloc<MovieTappedEvent, MovieTappedState> {
     MovieTappedEvent event,
   ) async* {
     if (event is TabChangedEvent) {
-      loadingCubit.showLoading();
+      yield MovieTappedLoadingState(tabIndex: event.tabIndex);
       await Future.delayed(new Duration(seconds: 2));
       Either<AppError, List<MovieEntity>> eitherResponse;
       switch (event.tabIndex) {
@@ -57,7 +57,6 @@ class MovieTappedBloc extends Bloc<MovieTappedEvent, MovieTappedState> {
                 tabIndex: event.tabIndex,
                 movies: movies,
               ));
-      loadingCubit.endLoading();
     }
   }
 }

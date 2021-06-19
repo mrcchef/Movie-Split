@@ -161,8 +161,8 @@ Future init() async {
     ),
   );
 
-  getItInstance.registerLazySingleton<LanguageBloc>(
-    () => LanguageBloc(
+  getItInstance.registerLazySingleton<LanguageCubit>(
+    () => LanguageCubit(
       getPreferredLanguage: getItInstance(),
       updatePreferredLanguage: getItInstance(),
     ),

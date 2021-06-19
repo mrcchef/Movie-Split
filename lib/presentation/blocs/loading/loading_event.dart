@@ -1,12 +1,12 @@
-part of 'loading_bloc.dart';
+// part of 'loading_bloc.dart';
 
-abstract class LoadingEvent extends Equatable {
-  const LoadingEvent();
+// abstract class LoadingEvent extends Equatable {
+//   const LoadingEvent();
 
-  @override
-  List<Object> get props => [];
-}
+//   @override
+//   List<Object> get props => [];
+// }
 
-class LoadingStartEvent extends LoadingEvent {}
+// class LoadingStartEvent extends LoadingEvent {}
 
-class LoadingEndEvent extends LoadingEvent {}
+// class LoadingEndEvent extends LoadingEvent {}

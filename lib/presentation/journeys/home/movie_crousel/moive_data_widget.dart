@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_movie/domain/entities/movie_entity.dart';
 import 'package:flutter_movie/presentation/blocs/movie_backdrop/movie_backdrop_bloc.dart';
 
 class MovieDataWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MovieBackdropBloc, MovieBackdropState>(
-      bloc: BlocProvider.of<MovieBackdropBloc>(context),
-      builder: (context, state) {
-        if (state is MovieBackdropLoaded)
+    return BlocBuilder<MovieBackdropCubit, MovieEntity>(
+      bloc: BlocProvider.of<MovieBackdropCubit>(context),
+      builder: (context, movieEntity) {
+        if (movieEntity != null)
           return Text(
-            state.movie.title,
+            movieEntity.title,
             textAlign: TextAlign.center,
             maxLines: 1,
             overflow: TextOverflow.fade,

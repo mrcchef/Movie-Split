@@ -18,7 +18,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   MovieCrouselBloc movieCrouselBloc;
-  MovieBackdropBloc movieBackdropBloc;
+  MovieBackdropCubit movieBackdropCubit;
   MovieTappedBloc movieTappedBloc;
   SearchMoviesBloc searchMoviesBloc;
 
@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     movieCrouselBloc = getItInstance<MovieCrouselBloc>();
-    movieBackdropBloc = movieCrouselBloc.movieBackdropBloc;
+    movieBackdropCubit = movieCrouselBloc.movieBackdropCubit;
     movieTappedBloc = getItInstance<MovieTappedBloc>();
     searchMoviesBloc = getItInstance<SearchMoviesBloc>();
     // movieCrouselBloc = movieCrouselBloc.movie;
@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void dispose() {
     super.dispose();
     movieCrouselBloc?.close();
-    movieBackdropBloc?.close();
+    movieBackdropCubit?.close();
     movieTappedBloc?.close();
     searchMoviesBloc?.close();
   }
@@ -49,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
           create: (context) => movieCrouselBloc,
         ),
         BlocProvider(
-          create: (context) => movieBackdropBloc,
+          create: (context) => movieBackdropCubit,
         ),
         BlocProvider(
           create: (context) => movieTappedBloc,

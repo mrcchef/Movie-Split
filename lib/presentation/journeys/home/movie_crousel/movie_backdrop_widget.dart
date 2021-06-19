@@ -27,13 +27,13 @@ class MovieBackdropWidget extends StatelessWidget {
             FractionallySizedBox(
               heightFactor: 1,
               widthFactor: 1,
-              child: BlocBuilder<MovieBackdropBloc, MovieBackdropState>(
+              child: BlocBuilder<MovieBackdropCubit, MovieEntity>(
                 bloc: BlocProvider.of(context),
-                builder: (context, state) {
-                  if (state is MovieBackdropLoaded) {
+                builder: (context, movieEntity) {
+                  if (movieEntity != null) {
                     return CachedNetworkImage(
                       imageUrl:
-                          '${APIConstants.BASE_IMAGE_URL}${state.movie.backdropPath}',
+                          '${APIConstants.BASE_IMAGE_URL}${movieEntity.backdropPath}',
                       fit: BoxFit.fitHeight,
                     );
                   }

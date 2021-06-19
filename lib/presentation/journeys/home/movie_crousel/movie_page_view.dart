@@ -58,8 +58,9 @@ class _MoviePageViewState extends State<MoviePageView> {
         itemCount: widget.movies?.length ?? 0,
         pageSnapping: true,
         onPageChanged: (index) {
-          BlocProvider.of<MovieBackdropBloc>(context)
-              .add(MovieBackdropChangeEvent(movie: widget.movies[index]));
+          BlocProvider.of<MovieBackdropCubit>(context)
+              .movieBackdropChangeEvent(widget.movies[index]);
+          // .add(MovieBackdropChangeEvent(movie: widget.movies[index]));
         },
       ),
     );

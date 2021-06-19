@@ -148,9 +148,9 @@ Future init() async {
 
   // Factory methods registers a new object every time it is called in the application
   getItInstance.registerFactory<MovieCrouselBloc>(() => MovieCrouselBloc(
-      getTrending: getItInstance(), movieBackdropBloc: getItInstance()));
+      getTrending: getItInstance(), movieBackdropCubit: getItInstance()));
 
-  getItInstance.registerFactory<MovieBackdropBloc>(() => MovieBackdropBloc());
+  getItInstance.registerFactory<MovieBackdropCubit>(() => MovieBackdropCubit());
 
   getItInstance.registerFactory<MovieTappedBloc>(
     () => MovieTappedBloc(

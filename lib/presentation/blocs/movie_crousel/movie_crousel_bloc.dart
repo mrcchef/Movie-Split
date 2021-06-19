@@ -16,9 +16,9 @@ part 'movie_crousel_state.dart';
 
 class MovieCrouselBloc extends Bloc<MovieCrouselEvent, MovieCrouselState> {
   final GetTrending getTrending;
-  final MovieBackdropBloc movieBackdropBloc;
+  final MovieBackdropCubit movieBackdropCubit;
   MovieCrouselBloc(
-      {@required this.getTrending, @required this.movieBackdropBloc})
+      {@required this.getTrending, @required this.movieBackdropCubit})
       : super(MovieCrouselInitial());
 
   @override
@@ -28,8 +28,9 @@ class MovieCrouselBloc extends Bloc<MovieCrouselEvent, MovieCrouselState> {
       yield eitherResponse.fold(
         (error) => MovieCrouselError(errorType: error.errorType),
         (movies) {
-          movieBackdropBloc
-              .add(MovieBackdropChangeEvent(movie: movies[event.defaultIndex]));
+          movieBackdropCubit
+              .movieBackdropChangeEvent(movies[event.defaultIndex]);
+          // .add(MovieBackdropChangeEvent(movie: movies[event.defaultIndex]));
           return MovieCrouselLoaded(
               movies: movies, defaultIndex: event.defaultIndex);
         },

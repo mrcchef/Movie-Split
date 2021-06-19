@@ -23,7 +23,7 @@ class MovieApp extends StatefulWidget {
 }
 
 class _MovieAppState extends State<MovieApp> {
-  LanguageBloc _languageBloc;
+  LanguageCubit _languageBloc;
   AuthenticationBloc _authenticationBloc;
   LoadingCubit _loadingCubit;
   final navigatorKey = GlobalKey<NavigatorState>();
@@ -61,11 +61,11 @@ class _MovieAppState extends State<MovieApp> {
     ScreenUtil.init();
     return MultiBlocProvider(
       providers: [
-        BlocProvider<LanguageBloc>.value(value: _languageBloc),
+        BlocProvider<LanguageCubit>.value(value: _languageBloc),
         BlocProvider<AuthenticationBloc>.value(value: _authenticationBloc),
         BlocProvider<LoadingCubit>.value(value: _loadingCubit),
       ],
-      child: BlocBuilder<LanguageBloc, LanguageState>(
+      child: BlocBuilder<LanguageCubit, LanguageState>(
         bloc: _languageBloc,
         builder: (ctx, state) {
           if (state is LanguageChanged) {

@@ -52,9 +52,11 @@ class NavigationDrawer extends StatelessWidget {
           NavigationBarExpandTile(
             title: TranslateConstants.language.t(context),
             onPressed: (index) {
-              BlocProvider.of<LanguageBloc>(context).add(
-                ToggleLanguageEvent(languageEntity: Languages.language[index]),
-              );
+              BlocProvider.of<LanguageCubit>(context)
+                  .toggleLanguageEvent(Languages.language[index]);
+              // add(
+              //   ToggleLanguageEvent(languageEntity: Languages.language[index]),
+              // );
             },
             subList: Languages.language.map((e) => e.value).toList(),
           ),

@@ -10,7 +10,7 @@ import 'package:flutter_movie/domain/entities/no_params.dart';
 import 'package:flutter_movie/domain/usecases/get_comming_soon.dart';
 import 'package:flutter_movie/domain/usecases/get_playing_now.dart';
 import 'package:flutter_movie/domain/usecases/get_popular.dart';
-import 'package:flutter_movie/presentation/blocs/loading/loading_bloc.dart';
+import 'package:flutter_movie/presentation/blocs/loading/loading_cubit.dart';
 
 part 'movie_tapped_event.dart';
 part 'movie_tapped_state.dart';
@@ -19,13 +19,13 @@ class MovieTappedBloc extends Bloc<MovieTappedEvent, MovieTappedState> {
   final GetCommingSoon getCommingSoon;
   final GetPopular getPopular;
   final GetNowPlaying getNowPlaying;
-  final LoadingBloc loadingBloc;
+  final LoadingCubit loadingCubit;
 
   MovieTappedBloc({
     @required this.getCommingSoon,
     @required this.getPopular,
     @required this.getNowPlaying,
-    @required this.loadingBloc,
+    @required this.loadingCubit,
   }) : super(MovieTappedInitial());
 
   @override
@@ -33,7 +33,7 @@ class MovieTappedBloc extends Bloc<MovieTappedEvent, MovieTappedState> {
     MovieTappedEvent event,
   ) async* {
     if (event is TabChangedEvent) {
-      yield MovieTappedLoadingState(tabIndex: event.tabIndex);
+      loadingCubit.showLoading();
       await Future.delayed(new Duration(seconds: 2));
       Either<AppError, List<MovieEntity>> eitherResponse;
       switch (event.tabIndex) {
@@ -57,7 +57,7 @@ class MovieTappedBloc extends Bloc<MovieTappedEvent, MovieTappedState> {
                 tabIndex: event.tabIndex,
                 movies: movies,
               ));
-      loadingBloc.add(LoadingEndEvent());
+      loadingCubit.endLoading();
     }
   }
 }

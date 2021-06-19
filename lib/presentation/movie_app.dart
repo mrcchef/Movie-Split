@@ -8,7 +8,7 @@ import 'package:flutter_movie/dipendencies/get_it.dart';
 import 'package:flutter_movie/presentation/app_localizations.dart';
 import 'package:flutter_movie/presentation/blocs/authentication/authentication_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/language/language_bloc.dart';
-import 'package:flutter_movie/presentation/blocs/loading/loading_bloc.dart';
+import 'package:flutter_movie/presentation/blocs/loading/loading_cubit.dart';
 import 'package:flutter_movie/presentation/journeys/home/home_screen.dart';
 import 'package:flutter_movie/presentation/journeys/loading/loading_screen.dart';
 import 'package:flutter_movie/presentation/routes.dart';
@@ -25,13 +25,13 @@ class MovieApp extends StatefulWidget {
 class _MovieAppState extends State<MovieApp> {
   LanguageBloc _languageBloc;
   AuthenticationBloc _authenticationBloc;
-  LoadingBloc _loadingBloc;
+  LoadingCubit _loadingCubit;
   final navigatorKey = GlobalKey<NavigatorState>();
 
   void initState() {
     _languageBloc = getItInstance<LanguageBloc>();
     _languageBloc.add(LoadPreferredLanguageEvent());
-    _loadingBloc = getItInstance<LoadingBloc>();
+    _loadingCubit = getItInstance<LoadingCubit>();
     _authenticationBloc = getItInstance<AuthenticationBloc>();
     super.initState();
   }
@@ -39,7 +39,7 @@ class _MovieAppState extends State<MovieApp> {
   void dispose() {
     _languageBloc?.close();
     _authenticationBloc?.close();
-    _loadingBloc?.close();
+    _loadingCubit?.close();
     super.dispose();
   }
 
@@ -63,7 +63,7 @@ class _MovieAppState extends State<MovieApp> {
       providers: [
         BlocProvider<LanguageBloc>.value(value: _languageBloc),
         BlocProvider<AuthenticationBloc>.value(value: _authenticationBloc),
-        BlocProvider<LoadingBloc>.value(value: _loadingBloc),
+        BlocProvider<LoadingCubit>.value(value: _loadingCubit),
       ],
       child: BlocBuilder<LanguageBloc, LanguageState>(
         bloc: _languageBloc,
@@ -98,7 +98,7 @@ class _MovieAppState extends State<MovieApp> {
                   // form the onGenerate Route
                   return LoadingScreen(
                     screen: child,
-                    loadingBloc: _loadingBloc,
+                    loadingCubit: _loadingCubit,
                   );
                   // return child;
                 },

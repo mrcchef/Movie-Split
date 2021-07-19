@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movie/common/constants/size_constants.dart';
-import 'package:flutter_movie/presentation/themes/theme_text.dart';
 import 'package:flutter_movie/common/extension/size_extension.dart';
 import 'package:flutter_movie/common/extension/string_extension.dart';
 import 'package:flutter_movie/presentation/widgets/button.dart';

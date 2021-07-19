@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_movie/domain/entities/app_error.dart';
 import 'package:flutter_movie/domain/entities/movie_params.dart';
 import 'package:flutter_movie/domain/entities/video_entity.dart';

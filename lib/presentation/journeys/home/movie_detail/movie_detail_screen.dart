@@ -3,8 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_movie/common/constants/size_constants.dart';
 import 'package:flutter_movie/dipendencies/get_it.dart';
 import 'package:flutter_movie/domain/entities/app_error.dart';
-import 'package:flutter_movie/domain/entities/movie_detail_entity.dart';
-import 'package:flutter_movie/domain/entities/movie_entity.dart';
 import 'package:flutter_movie/presentation/blocs/favourite_movie/favourite_movie_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/movie_cast/movie_cast_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/movie_detail/movie_detail_bloc.dart';

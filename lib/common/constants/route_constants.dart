@@ -1,6 +1,3 @@
-import 'package:flutter_movie/presentation/journeys/home/home_screen.dart';
-import 'package:flutter_movie/presentation/journeys/loading/loading_screen.dart';
-
 class RouteConstants {
   RouteConstants._();
 

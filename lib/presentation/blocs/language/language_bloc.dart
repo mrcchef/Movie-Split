@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +7,6 @@ import 'package:flutter_movie/domain/entities/language_entity.dart';
 import 'package:flutter_movie/domain/entities/no_params.dart';
 import 'package:flutter_movie/domain/usecases/get_preferred_language.dart';
 import 'package:flutter_movie/domain/usecases/update_preferred_language.dart';
-import 'package:http/http.dart';
 
 part 'language_event.dart';
 part 'language_state.dart';

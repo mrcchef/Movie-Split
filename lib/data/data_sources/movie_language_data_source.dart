@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_movie/common/constants/global.dart';
-import 'package:flutter_movie/domain/entities/language_entity.dart';
 import 'package:hive/hive.dart';
 import 'package:pedantic/pedantic.dart';
 

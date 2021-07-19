@@ -5,7 +5,6 @@ import 'package:flutter_movie/common/scrren_utils/screen_util.dart';
 import 'package:flutter_movie/domain/entities/movie_entity.dart';
 import 'package:flutter_movie/presentation/blocs/movie_backdrop/movie_backdrop_bloc.dart';
 import 'package:flutter_movie/presentation/journeys/home/movie_crousel/animated_movie_card_widget.dart';
-import 'package:flutter_movie/presentation/journeys/home/movie_crousel/movie_card_widget.dart';
 import 'package:flutter_movie/common/extension/size_extension.dart';
 
 class MoviePageView extends StatefulWidget {

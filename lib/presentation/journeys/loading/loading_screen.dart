@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_movie/common/constants/size_constants.dart';
 import 'package:flutter_movie/common/extension/size_extension.dart';
-import 'package:flutter_movie/common/scrren_utils/screen_util.dart';
-import 'package:flutter_movie/dipendencies/get_it.dart';
 import 'package:flutter_movie/presentation/blocs/loading/loading_cubit.dart';
 import 'package:flutter_movie/presentation/journeys/loading/loading_circle.dart';
 import 'package:flutter_movie/presentation/themes/app_color.dart';

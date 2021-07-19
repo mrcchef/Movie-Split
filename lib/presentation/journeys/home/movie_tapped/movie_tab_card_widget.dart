@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_movie/common/constants/route_constants.dart';
 import 'package:flutter_movie/data/core/api_constraint.dart';
 import 'package:flutter_movie/presentation/journeys/home/movie_detail/movie_detail_args.dart';
-import 'package:flutter_movie/presentation/journeys/home/movie_detail/movie_detail_screen.dart';
-import 'package:flutter_movie/presentation/themes/theme_text.dart';
 
 class MovieTabCardWidget extends StatelessWidget {
   final int movieId;

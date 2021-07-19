@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_movie/common/constants/size_constants.dart';
-import 'package:flutter_movie/common/scrren_utils/screen_util.dart';
 import 'package:flutter_movie/presentation/blocs/search_movies/search_movies_bloc.dart';
 import 'package:flutter_movie/presentation/journeys/home/search_movie/custom_search_delegate.dart';
 import 'package:flutter_movie/presentation/widgets/movie_logo.dart';

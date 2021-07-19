@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_movie/common/constants/size_constants.dart';
 import 'package:flutter_movie/common/constants/translate_constants.dart';
 import 'package:flutter_movie/domain/entities/app_error.dart';
 import 'package:flutter_movie/common/extension/string_extension.dart';
-import 'package:flutter_movie/presentation/blocs/movie_crousel/movie_crousel_bloc.dart';
 import 'package:flutter_movie/presentation/widgets/button.dart';
 import 'package:wiredash/wiredash.dart';
 

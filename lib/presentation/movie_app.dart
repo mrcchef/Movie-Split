@@ -9,7 +9,6 @@ import 'package:flutter_movie/presentation/app_localizations.dart';
 import 'package:flutter_movie/presentation/blocs/authentication/authentication_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/language/language_bloc.dart';
 import 'package:flutter_movie/presentation/blocs/loading/loading_cubit.dart';
-import 'package:flutter_movie/presentation/journeys/home/home_screen.dart';
 import 'package:flutter_movie/presentation/journeys/loading/loading_screen.dart';
 import 'package:flutter_movie/presentation/routes.dart';
 import 'package:flutter_movie/presentation/themes/app_color.dart';

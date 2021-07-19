@@ -135,7 +135,7 @@ class MovieRepositoryImpl extends MovieRepository {
     try {
       final bool response = await localDataSource.checkIfFavouriteMovie(id);
       return Right(response);
-    } on Exception catch (e) {
+    } on Exception catch (_) {
       return Left(AppError(AppErrorType.database));
     }
   }
@@ -145,7 +145,7 @@ class MovieRepositoryImpl extends MovieRepository {
     try {
       final void response = await localDataSource.deleteFavouriteMovie(id);
       return Right(response);
-    } on Exception catch (e) {
+    } on Exception catch (_) {
       return Left(AppError(AppErrorType.database));
     }
   }
@@ -156,7 +156,7 @@ class MovieRepositoryImpl extends MovieRepository {
       final List<MovieEntity> response =
           await localDataSource.getFavouriteMovies();
       return Right(response);
-    } on Exception catch (e) {
+    } on Exception catch (_) {
       return Left(AppError(AppErrorType.database));
     }
   }
@@ -168,7 +168,7 @@ class MovieRepositoryImpl extends MovieRepository {
       final void response = await localDataSource
           .saveFavouriteMovie(MovieTable.fromMovieEntity(movieEntity));
       return Right(response);
-    } on Exception catch (e) {
+    } on Exception catch (_) {
       return Left(AppError(AppErrorType.database));
     }
   }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_movie/presentation/app_localizations.dart';
 import 'package:flutter_movie/common/extension/string_extension.dart';
 
 class NavigationBarTile extends StatelessWidget {

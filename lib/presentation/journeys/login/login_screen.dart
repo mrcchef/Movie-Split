@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movie/common/constants/size_constants.dart';
-import 'package:flutter_movie/common/scrren_utils/screen_util.dart';
 import 'package:flutter_movie/presentation/journeys/login/login_form.dart';
 import 'package:flutter_movie/presentation/widgets/movie_logo.dart';
 

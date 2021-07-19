@@ -9,7 +9,6 @@ import 'package:flutter_movie/domain/entities/movie_entity.dart';
 import 'package:flutter_movie/domain/entities/no_params.dart';
 import 'package:flutter_movie/domain/usecases/get_trending.dart';
 import 'package:flutter_movie/presentation/blocs/movie_backdrop/movie_backdrop_bloc.dart';
-import 'package:flutter_movie/presentation/widgets/app_error_widget.dart';
 
 part 'movie_crousel_event.dart';
 part 'movie_crousel_state.dart';

@@ -11,7 +11,7 @@ class VideoWidget extends StatelessWidget {
     return BlocBuilder<MovieVideoBloc, MovieVideoState>(
       builder: (ctx, state) {
         if (state is MovieVideoLoaded && state.videos.iterator.moveNext()) {
-          final _videos = state.videos;
+          // final _videos = state.videos;
           return Button(
             buttonText: "Watch Trailers",
             onPressed: () {

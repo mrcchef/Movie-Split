@@ -1,5 +1,4 @@
 import 'package:flutter_movie/data/tables/movie_table.dart';
-import 'package:flutter_movie/domain/entities/movie_params.dart';
 import 'package:hive/hive.dart';
 
 import 'package:flutter_movie/common/constants/global.dart' as global;

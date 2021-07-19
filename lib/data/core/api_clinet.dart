@@ -4,7 +4,6 @@ import 'package:flutter_movie/data/core/unauthourized_exception.dart';
 import 'package:http/http.dart';
 
 import 'package:flutter_movie/data/core/api_constraint.dart';
-import 'package:flutter_movie/data/models/movies_result_model.dart';
 
 // This file is responsible for the core implemtation of sending http request
 class APIClient {

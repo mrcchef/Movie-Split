@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_movie/common/extension/size_extension.dart';
 
 class MovieLogo extends StatelessWidget {
   final double height;

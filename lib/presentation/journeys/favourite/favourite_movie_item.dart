@@ -7,7 +7,6 @@ import 'package:flutter_movie/data/core/api_constraint.dart';
 import 'package:flutter_movie/domain/entities/movie_entity.dart';
 import 'package:flutter_movie/presentation/blocs/favourite_movie/favourite_movie_bloc.dart';
 import 'package:flutter_movie/presentation/journeys/home/movie_detail/movie_detail_args.dart';
-import 'package:flutter_movie/presentation/journeys/home/movie_detail/movie_detail_screen.dart';
 
 class FavouriteMovieItem extends StatelessWidget {
   final MovieEntity movieEntity;

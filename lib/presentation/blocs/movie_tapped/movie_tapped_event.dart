@@ -10,8 +10,7 @@ abstract class MovieTappedEvent extends Equatable {
 class TabChangedEvent extends MovieTappedEvent {
   final int tabIndex;
 
-  TabChangedEvent({required this.tabIndex})
-      : assert(tabIndex != null, "tab index can not be null");
+  TabChangedEvent({required this.tabIndex});
 
   @override
   List<Object> get props => [tabIndex];

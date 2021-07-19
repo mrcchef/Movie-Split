@@ -1,11 +1,9 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_movie/common/constants/size_constants.dart';
 
 class NavigationBarExpandChildrenTile extends StatelessWidget {
   final String title;
-  final Function onPressed;
+  final void Function() onPressed;
   NavigationBarExpandChildrenTile({
     required this.title,
     required this.onPressed,

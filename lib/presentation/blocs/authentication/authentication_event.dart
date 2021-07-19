@@ -10,10 +10,7 @@ abstract class AuthenticationEvent extends Equatable {
 class LoginInitiateEvent extends AuthenticationEvent {
   final String username;
   final String password;
-  LoginInitiateEvent({required this.password, required this.username})
-      : assert(username != null || password != null,
-            'username and password can not be null ');
-
+  LoginInitiateEvent({required this.password, required this.username});
   @override
   List<Object> get props => [username, password];
 }

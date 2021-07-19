@@ -5,7 +5,7 @@ import 'package:flutter_movie/domain/entities/movie_entity.dart';
 // part 'movie_backdrop_event.dart';
 // part 'movie_backdrop_state.dart';
 
-class MovieBackdropCubit extends Cubit<MovieEntity> {
+class MovieBackdropCubit extends Cubit<MovieEntity?> {
   MovieBackdropCubit() : super(null);
 
   void movieBackdropChangeEvent(MovieEntity movie) => emit(movie);

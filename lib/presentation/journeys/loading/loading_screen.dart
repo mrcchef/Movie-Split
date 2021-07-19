@@ -7,7 +7,7 @@ import 'package:flutter_movie/presentation/journeys/loading/loading_circle.dart'
 import 'package:flutter_movie/presentation/themes/app_color.dart';
 
 class LoadingScreen extends StatelessWidget {
-  final Widget screen;
+  final Widget? screen;
   final LoadingCubit loadingCubit;
 
   LoadingScreen({Key? key, required this.screen, required this.loadingCubit})
@@ -24,7 +24,7 @@ class LoadingScreen extends StatelessWidget {
         builder: (context, shouldShow) {
           print("Loading Screen: $shouldShow");
           return Stack(fit: StackFit.expand, children: [
-            screen,
+            screen ?? SizedBox.shrink(),
             if (shouldShow)
               Container(
                 decoration:

@@ -46,7 +46,7 @@ class AppDialog extends StatelessWidget {
             SizedBox(
               height: Sizes.dimen_8.w,
             ),
-            if (image != null) image,
+            image ?? SizedBox.shrink(),
             Button(
               buttonText: buttonText.t(context),
               onPressed: () {

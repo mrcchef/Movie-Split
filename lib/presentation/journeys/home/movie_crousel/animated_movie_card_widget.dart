@@ -29,7 +29,7 @@ class _AnimatedMovieCardWidgetState extends State<AnimatedMovieCardWidget> {
       builder: (context, child) {
         double value = 1;
         if (widget.pageController.position.haveDimensions) {
-          value = widget.pageController.page - widget.index;
+          value = (widget.pageController.page ?? 0) - widget.index;
           value = 1 - (value.abs() * 0.1).clamp(0, 1);
         } else {
           value = widget.index == 0 ? value : value * 0.9;

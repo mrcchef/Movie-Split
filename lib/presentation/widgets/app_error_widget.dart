@@ -8,7 +8,7 @@ import 'package:wiredash/wiredash.dart';
 
 class AppErrorWidget extends StatelessWidget {
   final AppErrorType appErrorType;
-  final Function onPressed;
+  final void Function() onPressed;
 
   const AppErrorWidget(
       {Key? key, required this.appErrorType, required this.onPressed})
@@ -42,7 +42,7 @@ class AppErrorWidget extends StatelessWidget {
                 child: Button(
                   buttonText: TranslateConstants.feedback.t(context),
                   onPressed: () {
-                    return Wiredash.of(context).show();
+                    return Wiredash.of(context)?.show();
                   },
                 ),
               )

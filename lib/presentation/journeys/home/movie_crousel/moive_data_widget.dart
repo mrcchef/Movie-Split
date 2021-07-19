@@ -6,7 +6,7 @@ import 'package:flutter_movie/presentation/blocs/movie_backdrop/movie_backdrop_b
 class MovieDataWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MovieBackdropCubit, MovieEntity>(
+    return BlocBuilder<MovieBackdropCubit, MovieEntity?>(
       bloc: BlocProvider.of<MovieBackdropCubit>(context),
       builder: (context, movieEntity) {
         if (movieEntity != null)

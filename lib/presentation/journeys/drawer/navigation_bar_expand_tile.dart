@@ -3,7 +3,7 @@ import 'package:flutter_movie/presentation/journeys/drawer/navigation_bar_expand
 
 class NavigationBarExpandTile extends StatelessWidget {
   final String title;
-  final Function onPressed;
+  final void Function(int index) onPressed;
   final List<String> subList;
   NavigationBarExpandTile({
     required this.title,
@@ -20,7 +20,9 @@ class NavigationBarExpandTile extends StatelessWidget {
       children: [
         for (int i = 0; i < subList.length; i++)
           NavigationBarExpandChildrenTile(
-              title: subList[i], onPressed: () => onPressed(i)),
+            title: subList[i],
+            onPressed: () => onPressed(i),
+          ),
       ],
     );
   }

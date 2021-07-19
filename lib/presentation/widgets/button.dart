@@ -5,7 +5,7 @@ import 'package:flutter_movie/presentation/themes/app_color.dart';
 
 class Button extends StatelessWidget {
   final String buttonText;
-  final Function onPressed;
+  final void Function()? onPressed;
   final bool isEnabled;
 
   const Button(

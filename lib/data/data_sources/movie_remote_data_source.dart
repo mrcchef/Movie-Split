@@ -60,10 +60,16 @@ class MovieRemoteDataSourceImpl extends MovieRemoteDataSource {
   Future<MovieDetailModel> getMovieDetail(int id) async {
     final responseBody = await _client.get('movie/$id');
     final movie = MovieDetailModel.fromJson(responseBody);
-    if (_isValidMovieDeatil(movie)) {
+    if (_isValidMovieDetail(movie)) {
       return movie;
     }
     throw Exception();
+  }
+
+  bool _isValidMovieDetail(MovieDetailModel movie) {
+    return movie.id > 0 &&
+        movie.title.isNotEmpty &&
+        movie.posterPath.isNotEmpty;
   }
 
   @override

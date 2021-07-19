@@ -17,9 +17,7 @@ class MovieDetailScreen extends StatefulWidget {
   final MovieDetailArgs movieDetailArgs;
 
   const MovieDetailScreen({Key? key, required this.movieDetailArgs})
-      : assert(
-            movieDetailArgs != null, "movie detail arguments can not be null"),
-        super(key: key);
+      : super(key: key);
 
   @override
   _MovieDetailScreenState createState() => _MovieDetailScreenState();
@@ -90,7 +88,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                       padding: const EdgeInsets.symmetric(
                           horizontal: Sizes.dimen_16, vertical: Sizes.dimen_8),
                       child: Text(
-                        movie.overview,
+                        movie.overview ?? '',
                       ),
                     ),
                     Padding(

@@ -34,7 +34,7 @@ class MovieTappedBloc extends Bloc<MovieTappedEvent, MovieTappedState> {
     if (event is TabChangedEvent) {
       yield MovieTappedLoadingState(tabIndex: event.tabIndex);
       await Future.delayed(new Duration(seconds: 2));
-      Either<AppError, List<MovieEntity>> eitherResponse;
+      late Either<AppError, List<MovieEntity>> eitherResponse;
       switch (event.tabIndex) {
         case 0:
           eitherResponse = await getPopular(NoParams());
@@ -47,15 +47,23 @@ class MovieTappedBloc extends Bloc<MovieTappedEvent, MovieTappedState> {
           break;
       }
 
+      // if (eitherResponse == null) {
+      //   yield MovieTappedError(
+      //     appErrorType: AppErrorType.api,
+      //     tabIndex: event.tabIndex,
+      //   );
+      // } else {
       yield eitherResponse.fold(
-          (error) => MovieTappedError(
-                appErrorType: error.errorType,
-                tabIndex: event.tabIndex,
-              ),
-          (movies) => MovieTappedLoaded(
-                tabIndex: event.tabIndex,
-                movies: movies,
-              ));
+        (error) => MovieTappedError(
+          appErrorType: error.errorType,
+          tabIndex: event.tabIndex,
+        ),
+        (movies) => MovieTappedLoaded(
+          tabIndex: event.tabIndex,
+          movies: movies,
+        ),
+      );
+      // }
     }
   }
 }

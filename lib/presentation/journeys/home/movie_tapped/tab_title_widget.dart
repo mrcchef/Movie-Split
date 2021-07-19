@@ -5,7 +5,7 @@ import 'package:flutter_movie/presentation/themes/app_color.dart';
 
 class TabTitleWidget extends StatelessWidget {
   final String title;
-  final Function onTap;
+  final void Function() onTap;
   final bool isSelected;
 
   TabTitleWidget(

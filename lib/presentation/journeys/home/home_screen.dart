@@ -17,10 +17,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  MovieCrouselBloc movieCrouselBloc;
-  MovieBackdropCubit movieBackdropCubit;
-  MovieTappedBloc movieTappedBloc;
-  SearchMoviesBloc searchMoviesBloc;
+  late MovieCrouselBloc movieCrouselBloc;
+  late MovieBackdropCubit movieBackdropCubit;
+  late MovieTappedBloc movieTappedBloc;
+  late SearchMoviesBloc searchMoviesBloc;
 
   @override
   void initState() {

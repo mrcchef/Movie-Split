@@ -30,12 +30,12 @@ class CastCrewResultDataModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
-    if (this.cast != null) {
-      data['cast'] = this.cast.map((v) => v.toJson()).toList();
-    }
-    if (this.crew != null) {
-      data['crew'] = this.crew.map((v) => v.toJson()).toList();
-    }
+    // if (this.cast != null) {
+    data['cast'] = this.cast.map((v) => v.toJson()).toList();
+    // }
+    // if (this.crew != null) {
+    data['crew'] = this.crew.map((v) => v.toJson()).toList();
+    // }
     return data;
   }
 }

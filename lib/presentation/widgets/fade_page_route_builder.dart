@@ -4,8 +4,10 @@ class FadePageRouteBuilder<T> extends PageRouteBuilder<T> {
   final RouteSettings routeSettings;
   final WidgetBuilder widgetBuilder;
 
-  FadePageRouteBuilder({this.routeSettings, this.widgetBuilder})
-      : super(
+  FadePageRouteBuilder({
+    required this.routeSettings,
+    required this.widgetBuilder,
+  }) : super(
           pageBuilder: (context, animation, secondartAnimation) =>
               widgetBuilder(context),
           transitionsBuilder: (context, animation, secondartAnimation, child) {

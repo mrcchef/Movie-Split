@@ -27,7 +27,7 @@ class MovieBackdropWidget extends StatelessWidget {
             FractionallySizedBox(
               heightFactor: 1,
               widthFactor: 1,
-              child: BlocBuilder<MovieBackdropCubit, MovieEntity>(
+              child: BlocBuilder<MovieBackdropCubit, MovieEntity?>(
                 bloc: BlocProvider.of(context),
                 builder: (context, movieEntity) {
                   if (movieEntity != null) {

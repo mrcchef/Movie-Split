@@ -1,4 +1,4 @@
-extension NumExtension on num {
+extension NumExtension on double? {
   String convertToPrecentageString() {
     return ((this ?? 0) * 10).toString() + "%";
   }

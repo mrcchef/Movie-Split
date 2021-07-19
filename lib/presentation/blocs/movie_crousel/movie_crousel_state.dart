@@ -12,7 +12,7 @@ class MovieCrouselInitial extends MovieCrouselState {}
 class MovieCrouselError extends MovieCrouselState {
   final AppErrorType errorType;
 
-  MovieCrouselError({@required this.errorType});
+  MovieCrouselError({required this.errorType});
 }
 
 class MovieCrouselLoaded extends MovieCrouselState {

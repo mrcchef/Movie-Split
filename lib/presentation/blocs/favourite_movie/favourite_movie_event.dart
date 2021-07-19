@@ -11,7 +11,8 @@ class ToggleFavouriteMovieEvent extends FavouriteMovieEvent {
   final MovieEntity movieEntity;
   final bool isFavourite;
 
-  ToggleFavouriteMovieEvent({this.movieEntity, this.isFavourite});
+  ToggleFavouriteMovieEvent(
+      {required this.movieEntity, required this.isFavourite});
 
   @override
   List<Object> get props => [movieEntity, isFavourite];
@@ -20,7 +21,7 @@ class ToggleFavouriteMovieEvent extends FavouriteMovieEvent {
 class DeleteFavouriteMovieEvent extends FavouriteMovieEvent {
   final int movieId;
 
-  DeleteFavouriteMovieEvent({this.movieId});
+  DeleteFavouriteMovieEvent({required this.movieId});
 
   @override
   List<Object> get props => [movieId];
@@ -34,7 +35,7 @@ class LoadFavouriteMovieEvent extends FavouriteMovieEvent {
 class CheckIfFavouriteMovieEvent extends FavouriteMovieEvent {
   final int movieId;
 
-  CheckIfFavouriteMovieEvent({this.movieId});
+  CheckIfFavouriteMovieEvent({required this.movieId});
 
   @override
   List<Object> get props => [movieId];

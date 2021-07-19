@@ -14,12 +14,12 @@ class MovieDetailModel extends MovieDetailEntity {
   final String overview;
   final double popularity;
   final String posterPath;
-  final List<ProductionCompanies> productionCompanies;
-  final List<ProductionCountries> productionCountries;
+  // final List<ProductionCompanies> productionCompanies;
+  // final List<ProductionCountries> productionCountries;
   final String releaseDate;
   final int revenue;
   final int runtime;
-  final List<SpokenLanguages> spokenLanguages;
+  // final List<SpokenLanguages> spokenLanguages;
   final String status;
   final String tagline;
   final String title;
@@ -28,31 +28,31 @@ class MovieDetailModel extends MovieDetailEntity {
   final int voteCount;
 
   MovieDetailModel(
-      {this.adult,
-      this.backdropPath,
-      this.belongsToCollection,
-      this.budget,
-      this.genres,
-      this.homepage,
-      this.id,
-      this.imdbId,
-      this.originalLanguage,
-      this.originalTitle,
-      this.overview,
-      this.popularity,
-      this.posterPath,
-      this.productionCompanies,
-      this.productionCountries,
-      this.releaseDate,
-      this.revenue,
-      this.runtime,
-      this.spokenLanguages,
-      this.status,
-      this.tagline,
-      this.title,
-      this.video,
-      this.voteAverage,
-      this.voteCount})
+      {required this.adult,
+      required this.backdropPath,
+      required this.belongsToCollection,
+      required this.budget,
+      required this.genres,
+      required this.homepage,
+      required this.id,
+      required this.imdbId,
+      required this.originalLanguage,
+      required this.originalTitle,
+      required this.overview,
+      required this.popularity,
+      required this.posterPath,
+      // required this.productionCompanies,
+      // required this.productionCountries,
+      required this.releaseDate,
+      required this.revenue,
+      required this.runtime,
+      // required this.spokenLanguages,
+      required this.status,
+      required this.tagline,
+      required this.title,
+      required this.video,
+      required this.voteAverage,
+      required this.voteCount})
       : super(
           id: id,
           title: title,
@@ -67,25 +67,23 @@ class MovieDetailModel extends MovieDetailEntity {
     return MovieDetailModel(
       adult: json['adult'],
       backdropPath: json['backdrop_path'],
-      belongsToCollection: json['belongs_to_collection'] != null
-          ? new BelongsToCollection.fromJson(json['belongs_to_collection'])
-          : null,
+      belongsToCollection: json['belongs_to_collection'],
       budget: json['budget'],
       genres: _genres(json),
       homepage: json['homepage'],
-      id: json['id'],
+      id: json['id'] ?? -1,
       imdbId: json['imdb_id'],
       originalLanguage: json['original_language'],
       originalTitle: json['original_title'],
       overview: json['overview'],
       popularity: json['popularity'],
-      posterPath: json['poster_path'],
+      posterPath: json['poster_path'] ?? '',
       releaseDate: json['release_date'],
       revenue: json['revenue'],
       runtime: json['runtime'],
       status: json['status'],
       tagline: json['tagline'],
-      title: json['title'],
+      title: json['title'] ?? '',
       video: json['video'],
       voteAverage: json['vote_average'],
       voteCount: json['vote_count'],
@@ -96,13 +94,13 @@ class MovieDetailModel extends MovieDetailEntity {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['adult'] = this.adult;
     data['backdrop_path'] = this.backdropPath;
-    if (this.belongsToCollection != null) {
-      data['belongs_to_collection'] = this.belongsToCollection.toJson();
-    }
+    // if (this.belongsToCollection != null) {
+    data['belongs_to_collection'] = this.belongsToCollection.toJson();
+    // }
     data['budget'] = this.budget;
-    if (this.genres != null) {
-      data['genres'] = this.genres.map((v) => v.toJson()).toList();
-    }
+    // if (this.genres != null) {
+    data['genres'] = this.genres.map((v) => v.toJson()).toList();
+    // }
     data['homepage'] = this.homepage;
     data['id'] = this.id;
     data['imdb_id'] = this.imdbId;
@@ -111,21 +109,21 @@ class MovieDetailModel extends MovieDetailEntity {
     data['overview'] = this.overview;
     data['popularity'] = this.popularity;
     data['poster_path'] = this.posterPath;
-    if (this.productionCompanies != null) {
-      data['production_companies'] =
-          this.productionCompanies.map((v) => v.toJson()).toList();
-    }
-    if (this.productionCountries != null) {
-      data['production_countries'] =
-          this.productionCountries.map((v) => v.toJson()).toList();
-    }
+    // if (this.productionCompanies != null) {
+    // data['production_companies'] =
+    //     this.productionCompanies.map((v) => v.toJson()).toList();
+    // }
+    // if (this.productionCountries != null) {
+    // data['production_countries'] =
+    //     this.productionCountries.map((v) => v.toJson()).toList();
+    // }
     data['release_date'] = this.releaseDate;
     data['revenue'] = this.revenue;
     data['runtime'] = this.runtime;
-    if (this.spokenLanguages != null) {
-      data['spoken_languages'] =
-          this.spokenLanguages.map((v) => v.toJson()).toList();
-    }
+    // if (this.spokenLanguages != null) {
+    //   data['spoken_languages'] =
+    //       this.spokenLanguages.map((v) => v.toJson()).toList();
+    // }
     data['status'] = this.status;
     data['tagline'] = this.tagline;
     data['title'] = this.title;
@@ -138,7 +136,7 @@ class MovieDetailModel extends MovieDetailEntity {
 
 _genres(Map<String, dynamic> json) {
   if (json['genres'] != null) {
-    final genres = new List<Genres>();
+    final genres = [];
     json['genres'].forEach((v) {
       genres.add(new Genres.fromJson(v));
     });
@@ -146,12 +144,17 @@ _genres(Map<String, dynamic> json) {
 }
 
 class BelongsToCollection {
-  int id;
-  String name;
-  String posterPath;
-  String backdropPath;
+  late int id;
+  late String name;
+  late String posterPath;
+  late String backdropPath;
 
-  BelongsToCollection({this.id, this.name, this.posterPath, this.backdropPath});
+  BelongsToCollection({
+    required this.id,
+    required this.name,
+    required this.posterPath,
+    required this.backdropPath,
+  });
 
   BelongsToCollection.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -171,10 +174,13 @@ class BelongsToCollection {
 }
 
 class Genres {
-  int id;
-  String name;
+  late int id;
+  late String name;
 
-  Genres({this.id, this.name});
+  Genres({
+    required this.id,
+    required this.name,
+  });
 
   Genres.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -190,12 +196,17 @@ class Genres {
 }
 
 class ProductionCompanies {
-  int id;
-  String logoPath;
-  String name;
-  String originCountry;
+  late int id;
+  late String logoPath;
+  late String name;
+  late String originCountry;
 
-  ProductionCompanies({this.id, this.logoPath, this.name, this.originCountry});
+  ProductionCompanies({
+    required this.id,
+    required this.logoPath,
+    required this.name,
+    required this.originCountry,
+  });
 
   ProductionCompanies.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -215,10 +226,13 @@ class ProductionCompanies {
 }
 
 class ProductionCountries {
-  String iso31661;
-  String name;
+  late String iso31661;
+  late String name;
 
-  ProductionCountries({this.iso31661, this.name});
+  ProductionCountries({
+    required this.iso31661,
+    required this.name,
+  });
 
   ProductionCountries.fromJson(Map<String, dynamic> json) {
     iso31661 = json['iso_3166_1'];
@@ -234,10 +248,13 @@ class ProductionCountries {
 }
 
 class SpokenLanguages {
-  String iso6391;
-  String name;
+  late String iso6391;
+  late String name;
 
-  SpokenLanguages({this.iso6391, this.name});
+  SpokenLanguages({
+    required this.iso6391,
+    required this.name,
+  });
 
   SpokenLanguages.fromJson(Map<String, dynamic> json) {
     iso6391 = json['iso_639_1'];

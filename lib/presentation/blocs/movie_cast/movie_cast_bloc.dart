@@ -15,7 +15,7 @@ part 'movie_cast_state.dart';
 class MovieCastBloc extends Bloc<MovieCastEvent, MovieCastState> {
   final GetMovieCast getMovieCast;
 
-  MovieCastBloc({@required this.getMovieCast}) : super(MovieCastInitial());
+  MovieCastBloc({required this.getMovieCast}) : super(MovieCastInitial());
 
   @override
   Stream<MovieCastState> mapEventToState(

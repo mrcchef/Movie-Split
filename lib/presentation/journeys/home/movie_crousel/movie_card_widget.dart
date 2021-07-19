@@ -13,9 +13,9 @@ class MovieCardWidget extends StatefulWidget {
   final String posterPath;
 
   MovieCardWidget({
-    Key key,
-    @required this.movieId,
-    @required this.posterPath,
+    Key? key,
+    required this.movieId,
+    required this.posterPath,
   }) : super(key: key);
   @override
   _MovieCardWidgetState createState() => _MovieCardWidgetState();

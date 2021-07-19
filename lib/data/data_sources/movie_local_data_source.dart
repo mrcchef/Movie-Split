@@ -28,8 +28,9 @@ class MovieLocalDataSourceImpl extends MovieLocalDataSource {
     Box box = await Hive.openBox(global.movieBox);
     final ids = box.keys;
     List<MovieTable> movieList = [];
-    ids.forEach((element) {
-      movieList.add(box.get(element));
+    ids.forEach((movieId) {
+      MovieTable movie = box.get(movieId);
+      movieList.add(movie);
     });
 
     return movieList;

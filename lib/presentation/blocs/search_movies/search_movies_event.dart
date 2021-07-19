@@ -10,7 +10,5 @@ abstract class SearchMoviesEvent extends Equatable {
 class LoadSearchMovie extends SearchMoviesEvent {
   final String searchTerm;
 
-  LoadSearchMovie({@required this.searchTerm})
-      : assert(searchTerm != null, "search term can not be null");
+  LoadSearchMovie({required this.searchTerm});
 }
-

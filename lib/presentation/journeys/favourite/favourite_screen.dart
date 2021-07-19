@@ -11,7 +11,7 @@ class FavouriteScreen extends StatefulWidget {
 }
 
 class _FavouriteScreenState extends State<FavouriteScreen> {
-  FavouriteMovieBloc _favouriteMovieBloc;
+  late FavouriteMovieBloc _favouriteMovieBloc;
 
   @override
   void initState() {
@@ -23,7 +23,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
   @override
   void dispose() {
     super.dispose();
-    _favouriteMovieBloc?.close();
+    _favouriteMovieBloc.close();
   }
 
   @override

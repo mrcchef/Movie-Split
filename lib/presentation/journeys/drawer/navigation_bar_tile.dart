@@ -5,8 +5,8 @@ class NavigationBarTile extends StatelessWidget {
   final String title;
   final Function onPressed;
   NavigationBarTile({
-    @required this.title,
-    @required this.onPressed,
+    required this.title,
+    required this.onPressed,
   })  : assert(title != null, 'Title should not be null'),
         assert(onPressed != null, 'OnPressed function should not be null');
   @override

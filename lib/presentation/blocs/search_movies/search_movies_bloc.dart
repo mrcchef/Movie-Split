@@ -12,7 +12,7 @@ part 'search_movies_state.dart';
 
 class SearchMoviesBloc extends Bloc<SearchMoviesEvent, SearchMoviesState> {
   final MovieRepository movieRepository;
-  SearchMoviesBloc({@required this.movieRepository})
+  SearchMoviesBloc({required this.movieRepository})
       : super(SearchMoviesInitial());
 
   @override

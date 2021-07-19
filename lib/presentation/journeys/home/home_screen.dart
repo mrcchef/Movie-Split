@@ -35,10 +35,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void dispose() {
     super.dispose();
-    movieCrouselBloc?.close();
-    movieBackdropCubit?.close();
-    movieTappedBloc?.close();
-    searchMoviesBloc?.close();
+    movieCrouselBloc.close();
+    movieBackdropCubit.close();
+    movieTappedBloc.close();
+    searchMoviesBloc.close();
   }
 
   @override

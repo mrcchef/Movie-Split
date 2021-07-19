@@ -14,9 +14,7 @@ class MovieDetailLoading extends MovieDetailState {}
 class MovieDetailLoaded extends MovieDetailState {
   final MovieDetailEntity movieDetailEntity;
 
-  MovieDetailLoaded({@required this.movieDetailEntity})
-      : assert(
-            movieDetailEntity != null, "movie detail entity can not be null");
+  MovieDetailLoaded({required this.movieDetailEntity});
 
   @override
   List<Object> get props => [movieDetailEntity];

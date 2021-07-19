@@ -11,7 +11,7 @@ import 'package:flutter_movie/presentation/journeys/home/movie_detail/movie_deta
 class FavouriteMovieItem extends StatelessWidget {
   final MovieEntity movieEntity;
 
-  FavouriteMovieItem({this.movieEntity});
+  FavouriteMovieItem({required this.movieEntity});
   @override
   Widget build(BuildContext context) {
     return Container(

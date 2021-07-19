@@ -1,9 +1,13 @@
 class RequestTokenModel {
-  final bool success;
-  final String expiresAt;
-  final String requestToken;
+  late final bool success;
+  late final String expiresAt;
+  late final String requestToken;
 
-  RequestTokenModel({this.success, this.expiresAt, this.requestToken});
+  RequestTokenModel({
+    required this.success,
+    required this.expiresAt,
+    required this.requestToken,
+  });
 
   factory RequestTokenModel.fromJson(Map<String, dynamic> body) {
     return RequestTokenModel(

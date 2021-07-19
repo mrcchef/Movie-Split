@@ -10,8 +10,12 @@ class AnimatedMovieCardWidget extends StatefulWidget {
   final int movieId;
   final String posterPath;
 
-  AnimatedMovieCardWidget(
-      {this.pageController, this.index, this.movieId, this.posterPath});
+  AnimatedMovieCardWidget({
+    required this.pageController,
+    required this.index,
+    required this.movieId,
+    required this.posterPath,
+  });
   @override
   _AnimatedMovieCardWidgetState createState() =>
       _AnimatedMovieCardWidgetState();

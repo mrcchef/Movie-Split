@@ -14,8 +14,11 @@ class MovieTable extends MovieEntity {
   @HiveField(2)
   final String title;
 
-  MovieTable({this.id, this.posterPath, this.title})
-      : super(
+  MovieTable({
+    required this.id,
+    required this.posterPath,
+    required this.title,
+  }) : super(
           id: id,
           posterPath: posterPath,
           title: title,

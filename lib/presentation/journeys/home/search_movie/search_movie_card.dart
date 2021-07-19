@@ -11,7 +11,7 @@ import 'package:flutter_movie/domain/entities/movie_entity.dart';
 class SearchMovieCard extends StatelessWidget {
   final MovieEntity movie;
 
-  const SearchMovieCard({Key key, @required this.movie}) : super(key: key);
+  const SearchMovieCard({Key? key, required this.movie}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

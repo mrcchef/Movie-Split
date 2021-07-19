@@ -12,7 +12,7 @@ import 'package:flutter_movie/domain/entities/movie_detail_entity.dart';
 class BigPoster extends StatelessWidget {
   final MovieDetailEntity movieDetailEntity;
 
-  const BigPoster({Key key, @required this.movieDetailEntity})
+  const BigPoster({Key? key, required this.movieDetailEntity})
       : super(key: key);
 
   @override

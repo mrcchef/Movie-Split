@@ -7,14 +7,14 @@ import 'package:flutter_movie/presentation/widgets/button.dart';
 class AppDialog extends StatelessWidget {
   final String title;
   final String description;
-  final Widget image;
+  final Widget? image;
   final String buttonText;
 
   const AppDialog({
-    Key key,
-    @required this.title,
-    @required this.description,
-    @required this.buttonText,
+    Key? key,
+    required this.title,
+    required this.description,
+    required this.buttonText,
     this.image,
   }) : super(key: key);
   @override

@@ -20,9 +20,9 @@ class AuthenticationBloc
   final LoadingCubit loadingCubit;
 
   AuthenticationBloc(
-      {@required this.loginUser,
-      @required this.logoutUser,
-      @required this.loadingCubit})
+      {required this.loginUser,
+      required this.logoutUser,
+      required this.loadingCubit})
       : super(AuthenticationInitial());
 
   @override

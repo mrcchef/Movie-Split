@@ -11,9 +11,9 @@ class MoviePageView extends StatefulWidget {
   final List<MovieEntity> movies;
   final int intialIndex;
   MoviePageView({
-    Key key,
-    @required this.movies,
-    @required this.intialIndex,
+    Key? key,
+    required this.movies,
+    required this.intialIndex,
   })  : assert(intialIndex >= 0, 'Initial index cannot be less than zero'),
         super(key: key);
   @override
@@ -21,7 +21,7 @@ class MoviePageView extends StatefulWidget {
 }
 
 class _MoviePageViewState extends State<MoviePageView> {
-  PageController _pageController;
+  late PageController _pageController;
 
   @override
   void initState() {
@@ -54,7 +54,7 @@ class _MoviePageViewState extends State<MoviePageView> {
             posterPath: widget.movies[index].posterPath,
           );
         },
-        itemCount: widget.movies?.length ?? 0,
+        itemCount: widget.movies.length,
         pageSnapping: true,
         onPageChanged: (index) {
           BlocProvider.of<MovieBackdropCubit>(context)

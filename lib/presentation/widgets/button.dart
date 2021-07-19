@@ -9,9 +9,9 @@ class Button extends StatelessWidget {
   final bool isEnabled;
 
   const Button(
-      {Key key,
-      @required this.buttonText,
-      @required this.onPressed,
+      {Key? key,
+      required this.buttonText,
+      required this.onPressed,
       this.isEnabled = true})
       : super(key: key);
 

@@ -9,7 +9,7 @@ import 'package:flutter_movie/presentation/blocs/favourite_movie/favourite_movie
 class MovieDetailAppBar extends StatelessWidget {
   final MovieDetailEntity movieDetailEntity;
 
-  MovieDetailAppBar({this.movieDetailEntity});
+  MovieDetailAppBar({required this.movieDetailEntity});
 
   @override
   Widget build(BuildContext context) {

@@ -13,7 +13,7 @@ part 'movie_video_state.dart';
 class MovieVideoBloc extends Bloc<MovieVideoEvent, MovieVideoState> {
   final MovieRepository movieRepository;
 
-  MovieVideoBloc({@required this.movieRepository}) : super(MovieVideoInitial());
+  MovieVideoBloc({required this.movieRepository}) : super(MovieVideoInitial());
 
   @override
   Stream<MovieVideoState> mapEventToState(

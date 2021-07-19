@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class LoadingCircle extends StatelessWidget {
   final double size;
 
-  LoadingCircle({@required this.size});
+  LoadingCircle({required this.size});
   @override
   Widget build(BuildContext context) {
     return SizedBox(

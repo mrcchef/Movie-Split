@@ -7,7 +7,7 @@ import 'favourite_movie_item.dart';
 class FavouriteMovieGridView extends StatelessWidget {
   final List<MovieEntity> movieList;
 
-  FavouriteMovieGridView({@required this.movieList});
+  FavouriteMovieGridView({required this.movieList});
 
   @override
   Widget build(BuildContext context) {

@@ -9,9 +9,7 @@ class WiredashApp extends StatelessWidget {
   final locale;
 
   WiredashApp(
-      {@required this.navigatorKey,
-      @required this.child,
-      @required this.locale});
+      {required this.navigatorKey, required this.child, required this.locale});
 
   @override
   Widget build(BuildContext context) {

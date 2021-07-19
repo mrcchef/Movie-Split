@@ -6,11 +6,10 @@ class NavigationBarExpandTile extends StatelessWidget {
   final Function onPressed;
   final List<String> subList;
   NavigationBarExpandTile({
-    @required this.title,
-    @required this.subList,
-    @required this.onPressed,
-  })  : assert(title != null, 'Title should not be null'),
-        assert(subList != null, 'sublist should not be null');
+    required this.title,
+    required this.subList,
+    required this.onPressed,
+  });
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(

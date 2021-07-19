@@ -14,13 +14,13 @@ class MovieEntity extends Equatable {
   final String overview;
 
   const MovieEntity({
-    @required this.posterPath,
-    @required this.id,
-    @required this.backdropPath,
-    @required this.title,
-    @required this.voteAverage,
-    @required this.releaseDate,
-    @required this.overview,
+    required this.posterPath,
+    required this.id,
+    required this.backdropPath,
+    required this.title,
+    required this.voteAverage,
+    required this.releaseDate,
+    required this.overview,
   }) : assert(id != null, "Movie id must not be null");
 
   @override

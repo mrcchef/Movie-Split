@@ -5,8 +5,7 @@ import 'package:flutter_movie/presentation/journeys/home/movie_tapped/movie_tab_
 class MovieListViewBuilder extends StatelessWidget {
   final List<MovieEntity> movies;
 
-  MovieListViewBuilder({@required this.movies})
-      : assert(movies != null, 'list of movies can not be null');
+  MovieListViewBuilder({required this.movies});
 
   @override
   Widget build(BuildContext context) {

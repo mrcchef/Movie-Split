@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:flutter/material.dart';
 import 'package:flutter_movie/data/core/unauthourized_exception.dart';
 import 'package:flutter_movie/data/data_sources/authentication_local_data_source.dart';
 import 'package:flutter_movie/data/data_sources/authentication_remote_data_source.dart';
@@ -14,8 +13,8 @@ class AuthenticationRepositoryImpl extends AuthenticationRepository {
   final AuthenticationLocalDataSourceImpl authenticationLocalDataSourceImpl;
 
   AuthenticationRepositoryImpl(
-      {@required this.authenticationRemoteDataSourceImpl,
-      @required this.authenticationLocalDataSourceImpl});
+      {required this.authenticationRemoteDataSourceImpl,
+      required this.authenticationLocalDataSourceImpl});
 
   Future<Either<AppError, RequestTokenModel>> _getRequestToken() async {
     try {
@@ -36,8 +35,10 @@ class AuthenticationRepositoryImpl extends AuthenticationRepository {
     // getOrElse method supply default value when left object is retured
     // here default value is returned from the method in method getOrElse()
     // Here if ? ...
-    final token =
-        requestTokenEitherModel.getOrElse(() => null)?.requestToken ?? '';
+    final token = requestTokenEitherModel
+        .getOrElse(() =>
+            RequestTokenModel(success: false, expiresAt: '', requestToken: ''))
+        .requestToken;
 
     try {
       params.putIfAbsent('request_token', () => token);
@@ -46,8 +47,8 @@ class AuthenticationRepositoryImpl extends AuthenticationRepository {
       final responseBody = await authenticationRemoteDataSourceImpl
           .validateWidgetLogin(requestBody: params);
 
-      final sessionId = await authenticationRemoteDataSourceImpl.createSession(
-          requestBody: responseBody.toJson());
+      final String? sessionId = await authenticationRemoteDataSourceImpl
+          .createSession(requestBody: responseBody.toJson());
       print('session id: $sessionId');
       if (sessionId != null) {
         // suession created

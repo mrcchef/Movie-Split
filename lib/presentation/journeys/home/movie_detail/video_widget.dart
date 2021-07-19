@@ -15,8 +15,9 @@ class VideoWidget extends StatelessWidget {
           return Button(
             buttonText: "Watch Trailers",
             onPressed: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (ctx) => null));
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (ctx) =>
+                      Container())); // Need to implement watching youtube videos
             },
           );
         }

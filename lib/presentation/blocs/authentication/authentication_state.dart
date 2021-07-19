@@ -16,7 +16,7 @@ class LogoutSuccess extends AuthenticationState {}
 class AuthenticationError extends AuthenticationState {
   final String message;
 
-  AuthenticationError({@required this.message});
+  AuthenticationError({required this.message});
   @override
   List<Object> get props => [message];
 }

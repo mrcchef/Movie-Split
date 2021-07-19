@@ -10,9 +10,9 @@ class MovieCrouselWidget extends StatelessWidget {
   final List<MovieEntity> movies;
   final int defaultIndex;
   MovieCrouselWidget({
-    Key key,
-    @required this.movies,
-    @required this.defaultIndex,
+    Key? key,
+    required this.movies,
+    required this.defaultIndex,
   })  : assert(defaultIndex >= 0, 'Default index can not be less than 0'),
         assert(movies.isEmpty == false, 'Movies List should not be empty'),
         super(key: key);

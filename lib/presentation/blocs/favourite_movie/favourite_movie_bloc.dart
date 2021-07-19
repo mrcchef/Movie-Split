@@ -22,10 +22,10 @@ class FavouriteMovieBloc
   final SaveFavouriteMovie saveFavouriteMovie;
 
   FavouriteMovieBloc({
-    @required this.getFavouriteMovies,
-    @required this.checkIfFavouriteMovie,
-    @required this.deleteFavouriteMovie,
-    @required this.saveFavouriteMovie,
+    required this.getFavouriteMovies,
+    required this.checkIfFavouriteMovie,
+    required this.deleteFavouriteMovie,
+    required this.saveFavouriteMovie,
   }) : super(FavouriteMovieInitial());
 
   @override

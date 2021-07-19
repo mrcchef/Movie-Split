@@ -8,10 +8,10 @@ class MovieCastEntity extends Equatable {
   final String character;
 
   MovieCastEntity({
-    @required this.creditId,
-    @required this.name,
-    @required this.posterPath,
-    @required this.character,
+    required this.creditId,
+    required this.name,
+    required this.posterPath,
+    required this.character,
   });
 
   List<Object> get props => [creditId];

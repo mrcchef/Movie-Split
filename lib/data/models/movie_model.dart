@@ -23,21 +23,21 @@ class MovieModel extends MovieEntity {
   final String mediaType;
 
   MovieModel(
-      {this.adult,
-      this.backdropPath,
-      this.genreIds,
-      this.id,
-      this.originalLanguage,
-      this.originalTitle,
-      this.overview,
-      this.posterPath,
-      this.releaseDate,
-      this.title,
-      this.video,
-      this.voteAverage,
-      this.voteCount,
-      this.popularity,
-      this.mediaType})
+      {required this.adult,
+      required this.backdropPath,
+      required this.genreIds,
+      required this.id,
+      required this.originalLanguage,
+      required this.originalTitle,
+      required this.overview,
+      required this.posterPath,
+      required this.releaseDate,
+      required this.title,
+      required this.video,
+      required this.voteAverage,
+      required this.voteCount,
+      required this.popularity,
+      required this.mediaType})
       : super(
           backdropPath: backdropPath,
           id: id,
@@ -82,9 +82,9 @@ class MovieModel extends MovieEntity {
     data['release_date'] = this.releaseDate;
     data['title'] = this.title;
     data['video'] = this.video;
-    data['vote_average'] = this.voteAverage?.toDouble() ?? 0.0;
+    data['vote_average'] = this.voteAverage.toDouble();
     data['vote_count'] = this.voteCount;
-    data['popularity'] = this.popularity?.toDouble() ?? 0.0;
+    data['popularity'] = this.popularity.toDouble();
     data['media_type'] = this.mediaType;
     return data;
   }

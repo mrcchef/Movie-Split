@@ -64,7 +64,7 @@ class NavigationDrawer extends StatelessWidget {
             title: TranslateConstants.feedback,
             onPressed: () {
               Navigator.of(context).pop();
-              Wiredash.of(context).show();
+              Wiredash.of(context)?.show();
             },
           ),
           BlocListener<AuthenticationBloc, AuthenticationState>(

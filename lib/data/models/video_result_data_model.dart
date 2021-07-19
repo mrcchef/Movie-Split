@@ -1,10 +1,13 @@
 import 'package:flutter_movie/domain/entities/video_entity.dart';
 
 class VideoResultDataModel {
-  int id;
-  List<VideoModel> videos;
+  late int id;
+  late List<VideoModel> videos;
 
-  VideoResultDataModel({this.id, this.videos});
+  VideoResultDataModel({
+    required this.id,
+    required this.videos,
+  });
 
   VideoResultDataModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -19,9 +22,9 @@ class VideoResultDataModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
-    if (this.videos != null) {
-      data['results'] = this.videos.map((v) => v.toJson()).toList();
-    }
+    // if (this.videos != null) {
+    data['results'] = this.videos.map((v) => v.toJson()).toList();
+    // }
     return data;
   }
 }
@@ -37,14 +40,14 @@ class VideoModel extends VideoEntity {
   final String type;
 
   VideoModel(
-      {this.id,
-      this.iso6391,
-      this.iso31661,
-      this.key,
-      this.name,
-      this.site,
-      this.size,
-      this.type})
+      {required this.id,
+      required this.iso6391,
+      required this.iso31661,
+      required this.key,
+      required this.name,
+      required this.site,
+      required this.size,
+      required this.type})
       : super(
           key: key,
           title: name,

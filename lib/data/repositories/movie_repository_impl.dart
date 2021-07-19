@@ -21,7 +21,8 @@ class MovieRepositoryImpl extends MovieRepository {
   final MovieRemoteDataSource remoteDataSource;
   final MovieLocalDataSource localDataSource;
 
-  MovieRepositoryImpl({this.remoteDataSource, this.localDataSource});
+  MovieRepositoryImpl(
+      {required this.remoteDataSource, required this.localDataSource});
 
   @override
   Future<Either<AppError, List<MovieModel>>> getTrending() async {

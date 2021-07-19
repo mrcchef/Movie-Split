@@ -1,10 +1,10 @@
 import './movie_model.dart';
 
 class MoviesResultModel {
-  List<MovieModel> movies = [];
+  late List<MovieModel> movies = [];
 
   MoviesResultModel({
-    this.movies,
+    required this.movies,
   });
 
   MoviesResultModel.fromJson(Map<String, dynamic> json) {

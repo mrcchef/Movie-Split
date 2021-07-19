@@ -1,11 +1,15 @@
 import 'package:flutter_movie/domain/entities/movie_cast_entity.dart';
 
 class CastCrewResultDataModel {
-  int id;
-  List<CastModel> cast;
-  List<Crew> crew;
+  late int id;
+  late List<CastModel> cast;
+  late List<Crew> crew;
 
-  CastCrewResultDataModel({this.id, this.cast, this.crew});
+  CastCrewResultDataModel({
+    required this.id,
+    required this.cast,
+    required this.crew,
+  });
 
   CastCrewResultDataModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -51,18 +55,18 @@ class CastModel extends MovieCastEntity {
   final int order;
 
   CastModel(
-      {this.adult,
-      this.gender,
-      this.id,
-      this.knownForDepartment,
-      this.name,
-      this.originalName,
-      this.popularity,
-      this.profilePath,
-      this.castId,
-      this.character,
-      this.creditId,
-      this.order})
+      {required this.adult,
+      required this.gender,
+      required this.id,
+      required this.knownForDepartment,
+      required this.name,
+      required this.originalName,
+      required this.popularity,
+      required this.profilePath,
+      required this.castId,
+      required this.character,
+      required this.creditId,
+      required this.order})
       : super(
           creditId: creditId,
           name: name,
@@ -106,30 +110,30 @@ class CastModel extends MovieCastEntity {
 }
 
 class Crew {
-  bool adult;
-  int gender;
-  int id;
-  String knownForDepartment;
-  String name;
-  String originalName;
-  double popularity;
-  String profilePath;
-  String creditId;
-  String department;
-  String job;
+  late bool adult;
+  late int gender;
+  late int id;
+  late String knownForDepartment;
+  late String name;
+  late String originalName;
+  late double popularity;
+  late String profilePath;
+  late String creditId;
+  late String department;
+  late String job;
 
   Crew(
-      {this.adult,
-      this.gender,
-      this.id,
-      this.knownForDepartment,
-      this.name,
-      this.originalName,
-      this.popularity,
-      this.profilePath,
-      this.creditId,
-      this.department,
-      this.job});
+      {required this.adult,
+      required this.gender,
+      required this.id,
+      required this.knownForDepartment,
+      required this.name,
+      required this.originalName,
+      required this.popularity,
+      required this.profilePath,
+      required this.creditId,
+      required this.department,
+      required this.job});
 
   Crew.fromJson(Map<String, dynamic> json) {
     adult = json['adult'];

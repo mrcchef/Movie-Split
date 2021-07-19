@@ -17,8 +17,8 @@ class LanguageCubit extends Cubit<LanguageState> {
   final UpdatePreferredLanguage updatePreferredLanguage;
 
   LanguageCubit({
-    @required this.getPreferredLanguage,
-    @required this.updatePreferredLanguage,
+    required this.getPreferredLanguage,
+    required this.updatePreferredLanguage,
   }) : super(LanguageChanged(locale: Locale(Languages.language[0].code)));
 
   void toggleLanguageEvent(LanguageEntity languageEntity) async {

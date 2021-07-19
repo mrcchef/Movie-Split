@@ -14,17 +14,17 @@ class APIClient {
     this._client,
   );
 
-  String getPath(String path, {Map<dynamic, dynamic> params}) {
+  String getPath(String path, {Map<dynamic, dynamic>? params}) {
     var paramsPath = '';
     if (params?.isNotEmpty ?? false) {
-      params.forEach((key, value) {
+      params?.forEach((key, value) {
         if ((value as String).isNotEmpty) paramsPath += '&$key=$value';
       });
     }
     return "${APIConstants.BASE_URL}$path?api_key=${APIConstants.API_KEY}$paramsPath";
   }
 
-  dynamic get(String path, {Map<dynamic, dynamic> params}) async {
+  dynamic get(String path, {Map<dynamic, dynamic>? params}) async {
     final String url = getPath(path, params: params);
     print("get request url : $url");
     final response = await _client.get(
@@ -42,7 +42,7 @@ class APIClient {
     }
   }
 
-  dynamic post(String path, {Map<dynamic, dynamic> params}) async {
+  dynamic post(String path, {Map<dynamic, dynamic>? params}) async {
     final String url = getPath(path);
     print("post request url : $url");
     final response = await _client.post(Uri.parse(url),
@@ -57,7 +57,7 @@ class APIClient {
       throw Exception(response.reasonPhrase);
   }
 
-  dynamic deleteWithBody(String path, {Map<dynamic, dynamic> params}) async {
+  dynamic deleteWithBody(String path, {Map<dynamic, dynamic>? params}) async {
     Request request = Request('DELETE', Uri.parse(getPath(path)));
     request.headers['Content-Type'] = 'application/json';
     request.body = jsonEncode(params);

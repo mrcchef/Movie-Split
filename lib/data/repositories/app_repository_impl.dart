@@ -7,7 +7,7 @@ import 'package:flutter_movie/domain/repositories/app_repository.dart';
 class AppRepositoryImpl extends AppRepository {
   final MovieLanguageDataSource movieLanguageDataSource;
 
-  AppRepositoryImpl({@required this.movieLanguageDataSource});
+  AppRepositoryImpl({required this.movieLanguageDataSource});
 
   @override
   Future<Either<AppError, String>> getPreferredLanguage() async {

@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_movie/common/constants/size_constants.dart';
 
@@ -5,10 +7,9 @@ class NavigationBarExpandChildrenTile extends StatelessWidget {
   final String title;
   final Function onPressed;
   NavigationBarExpandChildrenTile({
-    @required this.title,
-    @required this.onPressed,
-  })  : assert(title != null, 'Title should not be null'),
-        assert(onPressed != null, 'OnPressed function should not be null');
+    required this.title,
+    required this.onPressed,
+  });
   @override
   Widget build(BuildContext context) {
     return Padding(

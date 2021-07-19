@@ -10,8 +10,7 @@ abstract class MovieVideoEvent extends Equatable {
 class LoadMovieVideo extends MovieVideoEvent {
   final int movieId;
 
-  LoadMovieVideo({@required this.movieId})
-      : assert(movieId != null, "Movie Id can not be null");
+  LoadMovieVideo({required this.movieId});
 
   @override
   List<Object> get props => [movieId];

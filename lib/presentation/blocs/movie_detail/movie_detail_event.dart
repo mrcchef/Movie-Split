@@ -10,8 +10,7 @@ abstract class MovieDetailEvent extends Equatable {
 class MovieDetailLoadEvent extends MovieDetailEvent {
   final int movieId;
 
-  MovieDetailLoadEvent({@required this.movieId})
-      : assert(movieId != null, "movie id can not be null");
+  MovieDetailLoadEvent({required this.movieId});
 
   @override
   List<Object> get props => [movieId];

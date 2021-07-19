@@ -10,7 +10,7 @@ class LoadingScreen extends StatelessWidget {
   final Widget screen;
   final LoadingCubit loadingCubit;
 
-  LoadingScreen({Key key, @required this.screen, @required this.loadingCubit})
+  LoadingScreen({Key? key, required this.screen, required this.loadingCubit})
       : super(key: key);
 
   @override

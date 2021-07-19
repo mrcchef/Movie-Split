@@ -9,9 +9,7 @@ class MovieTabCardWidget extends StatelessWidget {
   final String posterPath;
   final String title;
   MovieTabCardWidget(
-      {@required this.title, @required this.posterPath, @required this.movieId})
-      : assert(title != null, 'title should not be equal to null'),
-        assert(posterPath != null, 'imageUrl should not be eqaul to null');
+      {required this.title, required this.posterPath, required this.movieId});
 
   @override
   Widget build(BuildContext context) {

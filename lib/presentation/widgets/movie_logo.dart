@@ -4,8 +4,8 @@ class MovieLogo extends StatelessWidget {
   final double height;
 
   MovieLogo({
-    Key key,
-    @required this.height,
+    Key? key,
+    required this.height,
   })  : assert(height > 0, "Height can not be less than or equal to zero"),
         assert(height != null, "Height can not be null"),
         super(key: key);

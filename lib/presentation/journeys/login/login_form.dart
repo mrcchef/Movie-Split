@@ -13,8 +13,8 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
-  TextEditingController usernameController;
-  TextEditingController passwordController;
+  late TextEditingController usernameController;
+  late TextEditingController passwordController;
   bool isEnabledLogin = false;
 
   @override
@@ -47,7 +47,6 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
-    
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(Sizes.dimen_20),

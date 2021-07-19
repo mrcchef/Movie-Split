@@ -16,7 +16,7 @@ import 'package:flutter_movie/presentation/widgets/app_error_widget.dart';
 class MovieDetailScreen extends StatefulWidget {
   final MovieDetailArgs movieDetailArgs;
 
-  const MovieDetailScreen({Key key, @required this.movieDetailArgs})
+  const MovieDetailScreen({Key? key, required this.movieDetailArgs})
       : assert(
             movieDetailArgs != null, "movie detail arguments can not be null"),
         super(key: key);
@@ -26,10 +26,10 @@ class MovieDetailScreen extends StatefulWidget {
 }
 
 class _MovieDetailScreenState extends State<MovieDetailScreen> {
-  MovieDetailBloc _movieDetailBloc;
-  MovieCastBloc _movieCastBloc;
-  MovieVideoBloc _movieVideoBloc;
-  FavouriteMovieBloc _favouriteMovieBloc;
+  late MovieDetailBloc _movieDetailBloc;
+  late MovieCastBloc _movieCastBloc;
+  late MovieVideoBloc _movieVideoBloc;
+  late FavouriteMovieBloc _favouriteMovieBloc;
 
   @override
   void initState() {
@@ -45,10 +45,10 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
 
   @override
   void dispose() {
-    _movieDetailBloc?.close();
-    _movieCastBloc?.close();
-    _movieVideoBloc?.close();
-    _favouriteMovieBloc?.close();
+    _movieDetailBloc.close();
+    _movieCastBloc.close();
+    _movieVideoBloc.close();
+    _favouriteMovieBloc.close();
     super.dispose();
   }
   // So we  have two method of BlocProvider<T>

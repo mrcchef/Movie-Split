@@ -9,14 +9,14 @@ abstract class LanguageState extends Equatable {
 
 class LanguageChanged extends LanguageState {
   final Locale locale;
-  LanguageChanged({this.locale});
+  LanguageChanged({required this.locale});
 
   List<Object> get props => [locale.languageCode];
 }
 
 class LanguageError extends LanguageState {
   final AppErrorType appErrorType;
-  LanguageError({this.appErrorType});
+  LanguageError({required this.appErrorType});
 
   List<Object> get props => [appErrorType];
 }

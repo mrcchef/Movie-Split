@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_movie/domain/entities/app_error.dart';
 import 'package:flutter_movie/domain/entities/movie_detail_entity.dart';
 import 'package:flutter_movie/domain/entities/movie_params.dart';
@@ -23,11 +22,11 @@ class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState> {
   final FavouriteMovieBloc favouriteMovieBloc;
   final LoadingCubit loadingCubit;
   MovieDetailBloc({
-    @required this.getMovieDetail,
-    @required this.movieCastBloc,
-    @required this.movieVideoBloc,
-    @required this.favouriteMovieBloc,
-    @required this.loadingCubit,
+    required this.getMovieDetail,
+    required this.movieCastBloc,
+    required this.movieVideoBloc,
+    required this.favouriteMovieBloc,
+    required this.loadingCubit,
   }) : super(MovieDetailInitial());
 
   @override

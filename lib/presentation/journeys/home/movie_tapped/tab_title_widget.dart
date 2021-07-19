@@ -9,9 +9,7 @@ class TabTitleWidget extends StatelessWidget {
   final bool isSelected;
 
   TabTitleWidget(
-      {@required this.title, @required this.onTap, this.isSelected = false})
-      : assert(title != null, 'Tab title should not be null'),
-        assert(onTap != null, 'OnTap should not be null');
+      {required this.title, required this.onTap, this.isSelected = false});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +28,7 @@ class TabTitleWidget extends StatelessWidget {
         child: Text(
           title.t(context),
           style: isSelected
-              ? Theme.of(context).textTheme.subtitle1.copyWith(
+              ? Theme.of(context).textTheme.subtitle1?.copyWith(
                     color: AppColor.royalBlue,
                     fontWeight: FontWeight.bold,
                   )

@@ -12,7 +12,7 @@ class MovieVideoInitial extends MovieVideoState {}
 class MovieVideoLoaded extends MovieVideoState {
   final List<VideoEntity> videos;
 
-  MovieVideoLoaded({@required this.videos});
+  MovieVideoLoaded({required this.videos});
 
   @override
   List<Object> get props => [videos];
@@ -20,5 +20,5 @@ class MovieVideoLoaded extends MovieVideoState {
 
 class MovieVideoError extends MovieVideoState {
   final AppErrorType appErrorType;
-  MovieVideoError({this.appErrorType, tabIndex});
+  MovieVideoError({required this.appErrorType, tabIndex});
 }
